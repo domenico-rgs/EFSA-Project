@@ -2,7 +2,7 @@ close all
 clear all
 clc
 
-%% Import dati
+%% Data import
 opts=detectImportOptions('./MiniProjectEFSA.xlsx');
 dati=readtable('./MiniProjectEFSA.xlsx', opts);
 
@@ -13,63 +13,36 @@ x_2 = data_endpoint_2.dose;
 x_3 = data_endpoint_2.numberOfAnimals;
 y=data_endpoint_2.response;
 n=length(y);
+TSS=sum((y-mean(y)'*(y-mean(y))));
 
 %K=1
 phi_1=[ones(n,1) x_1];
 phi_2=[ones(n,1) x_2];
 phi_3=[ones(n,1) x_3];
 
-[theta_1, std_theta_1] = lscov(phi_1, y);
-[theta_2, std_theta_2] = lscov(phi_2, y);
-[theta_3, std_theta_3] = lscov(phi_3, y);
-
-y_hat_1 = phi_1 * theta_1;
-y_hat_2 = phi_2 * theta_2;
-y_hat_3 = phi_3 * theta_3;
-
-epsilon_1 = y - y_hat_1; %residuo
-epsilon_2 = y - y_hat_2; 
-epsilon_3 = y - y_hat_3; 
-
-SSR_1 = epsilon_1'*epsilon_1; 
-SSR_2 = epsilon_2'*epsilon_2; %MIGLIORE
-SSR_3 = epsilon_3'*epsilon_3;
+[theta_1,std_theta_1, SSR_1] = identificator(phi_1,y);
+[theta_2,std_theta_2, SSR_2] = identificator(phi_2,y);
+[theta_3,std_theta_3, SSR_3] = identificator(phi_3,y);
 
 %K=2
 phi_4=[ones(n,1) x_1 x_2];
 phi_5=[ones(n,1) x_1 x_3];
 phi_6=[ones(n,1) x_2 x_3];
 
-[theta_4, std_theta_4] = lscov(phi_4, y);
-[theta_5, std_theta_5] = lscov(phi_5, y);
-[theta_6, std_theta_6] = lscov(phi_6, y);
-
-y_hat_4 = phi_4 * theta_4;
-y_hat_5 = phi_5 * theta_5;
-y_hat_6 = phi_6 * theta_6;
-
-epsilon_4 = y - y_hat_4;
-epsilon_5 = y - y_hat_5; 
-epsilon_6 = y - y_hat_6; 
-
-SSR_4 = epsilon_4'*epsilon_4; % MIGLIORE
-SSR_5 = epsilon_5'*epsilon_5;
-SSR_6 = epsilon_6'*epsilon_6;
+[theta_4,std_theta_4, SSR_4] = identificator(phi_4,y);
+[theta_5,std_theta_5, SSR_5] = identificator(phi_5,y);
+[theta_6,std_theta_6, SSR_6] = identificator(phi_6,y);
 
 %K=3
 phi_7=[ones(n,1) x_1 x_2 x_3];
-[theta_7, std_theta_7] = lscov(phi_7, y);
-y_hat_7 = phi_7 * theta_7;
-epsilon_7 = y - y_hat_7;
-SSR_7 = epsilon_7'*epsilon_7; 
+[theta_7,std_theta_7, SSR_7] = identificator(phi_7,y);
+ 
 
-%BEST MODEL
-AIC_1 = 2*length(theta_2)/n + log(SSR_2);
-AIC_2 = 2*length(theta_4)/n + log(SSR_4); %VINCENTE
-AIC_3 = 2*length(theta_7)/n + log(SSR_7);
+%BEST MODELS
+[FPE_1,AIC_1,MDL_1,SQUARED_R_1,Cp_1,BIC_1] = objectiveTest(n, length(theta_1), SSR_1, TSS);
+[FPE_4,AIC_4,MDL_4,SQUARED_R_4,Cp_4,BIC_4] = objectiveTest(n, length(theta_4), SSR_4, TSS); %WINNER
+[FPE_7,AIC_7,MDL_7,SQUARED_R_7,Cp_7,BIC_7] = objectiveTest(n, length(theta_7), SSR_7, TSS);
 
-%Miglioramenti: vedere se possibile renderlo iterativo, il prof dice di
-%usare una least square pesata (heteroscedasticity), vedere altri metodi
-%per il modello migliore. Plottare risultati
+%Miglioramenti: il prof dice di usare una least square pesata (heteroscedasticity). Plottare risultati
 
 

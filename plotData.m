@@ -22,7 +22,8 @@ figure
 plot(dose,dati_male_1.response);
 errorbar(dose,dati_male_1.response,dati_male_1.SD)
 grid on
-title('Dose-Responde for male endpoint 1')
+xlim([-10 160])
+title('Dose-Response for male endpoint 1')
 xlabel('Dose')
 ylabel('Response')
 
@@ -31,7 +32,8 @@ figure
 plot(dose,dati_female_1.response);
 errorbar(dose,dati_female_1.response,dati_female_1.SD)
 grid on
-title('Dose-Responde for female endpoint 1')
+xlim([-10 160])
+title('Dose-Response for female endpoint 1')
 xlabel('Dose')
 ylabel('Response')
 
@@ -40,7 +42,8 @@ figure
 plot(dose,dati_male_2.response);
 errorbar(dose,dati_male_2.response,dati_male_2.SD)
 grid on
-title('Dose-Responde for male endpoint 2')
+xlim([-10 160])
+title('Dose-Response for male endpoint 2')
 xlabel('Dose')
 ylabel('Response')
 
@@ -49,7 +52,8 @@ figure
 plot(dose,dati_female_2.response);
 errorbar(dose,dati_female_2.response,dati_female_2.SD)
 grid on
-title('Dose-Responde for female endpoint 2')
+xlim([-10 160])
+title('Dose-Response for female endpoint 2')
 xlabel('Dose')
 ylabel('Response')
 
@@ -58,7 +62,8 @@ figure
 plot(dose,dati_male_3.response);
 errorbar(dose,dati_male_3.response,dati_male_3.SD)
 grid on
-title('Dose-Responde for male endpoint 3')
+xlim([-10 160])
+title('Dose-Response for male endpoint 3')
 xlabel('Dose')
 ylabel('Response')
 
@@ -67,6 +72,7 @@ figure
 plot(dose,dati_female_3.response);
 errorbar(dose,dati_female_3.response,dati_male_3.SD)
 grid on
-title('Dose-Responde for female endpoint 3')
+xlim([-10 160])
+title('Dose-Response for female endpoint 3')
 xlabel('Dose')
 ylabel('Response')
