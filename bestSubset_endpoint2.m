@@ -39,7 +39,7 @@ phi_7=[ones(n,1) x_1 x_2 x_3];
  
 
 %BEST MODELS
-[FPE_1,AIC_1,MDL_1,SQUARED_R_1,Cp_1,BIC_1] = objectiveTest(n, length(theta_1), SSR_1, TSS);
+[FPE_2,AIC_2,MDL_2,SQUARED_R_2,Cp_2,BIC_2] = objectiveTest(n, length(theta_2), SSR_2, TSS);
 [FPE_4,AIC_4,MDL_4,SQUARED_R_4,Cp_4,BIC_4] = objectiveTest(n, length(theta_4), SSR_4, TSS); %WINNER
 [FPE_7,AIC_7,MDL_7,SQUARED_R_7,Cp_7,BIC_7] = objectiveTest(n, length(theta_7), SSR_7, TSS);
 
