@@ -37,19 +37,19 @@ phi_5=[ones(n,1) x_2 x_3];
 [theta_5,std_theta_5, RSS_5] = identificator(phi_5,y, weights);
 
 %% K=3
-phi_7=[ones(n,1) x_2 x_1 x_3];
-[theta_7,std_theta_7, RSS_7] = identificator(phi_7,y, weights);
+phi_6=[ones(n,1) x_2 x_1 x_3];
+[theta_6,std_theta_6, RSS_6] = identificator(phi_6,y, weights);
 
 
 %% BEST MODEL
 [FPE_2,AIC_2,MDL_2,SQUARED_R_2,Cp_2,BIC_2] = objectiveTest(n, length(theta_2), RSS_2, TSS);
 [FPE_4,AIC_4,MDL_4,SQUARED_R_4,Cp_4,BIC_4] = objectiveTest(n, length(theta_4), RSS_4, TSS); %winner
-[FPE_7,AIC_7,MDL_7,SQUARED_R_7,Cp_7,BIC_7] = objectiveTest(n, length(theta_7), RSS_7, TSS);
+[FPE_6,AIC_6,MDL_6,SQUARED_R_6,Cp_6,BIC_6] = objectiveTest(n, length(theta_6), RSS_6, TSS);
 
 %% Result plot
 %RSS
 figure
-sgtitle("RSS at each subset selection iteration")
+sgtitle("RSS for each iteration")
 subplot(1,3,1)
 bar([RSS_1 RSS_2 RSS_3])
 grid on
@@ -60,35 +60,35 @@ grid on
 set(gca,'XTickLabel',[4 5]);
 xlabel("models")
 subplot(1,3,3)
-bar(RSS_7)
+bar(RSS_6)
 grid on
-set(gca,'XTickLabel',7);
+set(gca,'XTickLabel',6);
 
 %Objective test
-x=[2 4 7];
+x=[2 4 6];
 figure
 sgtitle("Objective tests evolution")
 subplot(2,3,1)
-plot(x,[FPE_2 FPE_4 FPE_7],'-o')
+plot(x,[FPE_2 FPE_4 FPE_6],'-o')
 grid on
 title("FPE")
 subplot(2,3,2)
-plot(x,[AIC_2 AIC_4 AIC_7],'-o')
+plot(x,[AIC_2 AIC_4 AIC_6],'-o')
 grid on
 title("AIC")
 subplot(2,3,3)
-plot(x,[MDL_2 MDL_4 MDL_7],'-o')
+plot(x,[MDL_2 MDL_4 MDL_6],'-o')
 grid on
 title("MDL")
 subplot(2,3,4)
-plot(x,[SQUARED_R_2 SQUARED_R_4 SQUARED_R_7],'-o')
+plot(x,[SQUARED_R_2 SQUARED_R_4 SQUARED_R_6],'-o')
 grid on
 title("R^2")
 subplot(2,3,5)
-plot(x,[Cp_2 Cp_4 Cp_7],'-o')
+plot(x,[Cp_2 Cp_4 Cp_6],'-o')
 grid on
 title("C_p")
 subplot(2,3,6)
-plot(x,[BIC_2 BIC_4 BIC_7],'-o')
+plot(x,[BIC_2 BIC_4 BIC_6],'-o')
 grid on
 title("BIC")
