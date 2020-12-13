@@ -78,20 +78,55 @@ phi_15=[ones(n,1) x_3 x_2 x_1 x_5 x_4];
 [FPE_15,AIC_15,MDL_15,SQUARED_R_15,Cp_15,BIC_15] = objectiveTest(n, length(theta_15), RSS_15, TSS); 
 
 %% Result plot
+%RSS
 figure
 sgtitle("RSS at each subset selection iteration")
 subplot(2,3,1)
 bar([RSS_1 RSS_2 RSS_3 RSS_4 RSS_5])
+grid on
 ylabel("RSS")
 subplot(2,3,2)
 bar([RSS_6 RSS_7 RSS_8 RSS_9])
+grid on
 set(gca,'XTickLabel',[6 7 8 9]);
 subplot(2,3,3)
 bar([RSS_10 RSS_11 RSS_12])
+grid on
 set(gca,'XTickLabel',[10 11 12]);
 subplot(2,3,4)
 bar([RSS_13 RSS_14])
+grid on
 set(gca,'XTickLabel',[13 14]);
 subplot(2,3,5)
 bar(RSS_15)
-set(gca,'XTickLabel',[15]);
+grid on
+set(gca,'XTickLabel',15);
+
+%Objective test
+x=[4 8 11 13 15];
+figure
+sgtitle("Objective tests evolution")
+subplot(2,3,1)
+plot(x,[FPE_4 FPE_8 FPE_11 FPE_13 FPE_15],'-o')
+grid on
+title("FPE")
+subplot(2,3,2)
+plot(x,[AIC_4 AIC_8 AIC_11 AIC_13 AIC_15],'-o')
+grid on
+title("AIC")
+subplot(2,3,3)
+plot(x,[MDL_4 MDL_8 MDL_11 MDL_13 MDL_15],'-o')
+grid on
+title("MDL")
+subplot(2,3,4)
+plot(x,[SQUARED_R_4 SQUARED_R_8 SQUARED_R_11 SQUARED_R_13 SQUARED_R_15],'-o')
+grid on
+title("R^2")
+subplot(2,3,5)
+plot(x,[Cp_4 Cp_8 Cp_11 Cp_13 Cp_15],'-o')
+grid on
+title("C_p")
+subplot(2,3,6)
+plot(x,[BIC_4 BIC_8 BIC_11 BIC_13 BIC_15],'-o')
+grid on
+title("BIC")

@@ -47,15 +47,48 @@ phi_7=[ones(n,1) x_2 x_1 x_3];
 [FPE_7,AIC_7,MDL_7,SQUARED_R_7,Cp_7,BIC_7] = objectiveTest(n, length(theta_7), RSS_7, TSS);
 
 %% Result plot
+%RSS
 figure
 sgtitle("RSS at each subset selection iteration")
 subplot(1,3,1)
 bar([RSS_1 RSS_2 RSS_3])
+grid on
 ylabel("RSS")
 subplot(1,3,2)
 bar([RSS_4 RSS_5])
+grid on
 set(gca,'XTickLabel',[4 5]);
 xlabel("models")
 subplot(1,3,3)
 bar(RSS_7)
+grid on
 set(gca,'XTickLabel',7);
+
+%Objective test
+x=[2 4 7];
+figure
+sgtitle("Objective tests evolution")
+subplot(2,3,1)
+plot(x,[FPE_2 FPE_4 FPE_7])
+grid on
+title("FPE")
+subplot(2,3,2)
+plot(x,[AIC_2 AIC_4 AIC_7])
+grid on
+title("AIC")
+subplot(2,3,3)
+plot(x,[MDL_2 MDL_4 MDL_7])
+grid on
+title("MDL")
+subplot(2,3,4)
+plot(x,[SQUARED_R_2 SQUARED_R_4 SQUARED_R_7])
+grid on
+title("R^2")
+subplot(2,3,5)
+plot(x,[Cp_2 Cp_4 Cp_7])
+grid on
+title("C_p")
+subplot(2,3,6)
+plot(x,[BIC_2 BIC_4 BIC_7])
+grid on
+title("BIC")
