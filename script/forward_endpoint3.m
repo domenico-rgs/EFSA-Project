@@ -17,7 +17,7 @@ y=data_endpoint_3.response;
 
 n=length(y);
 
-TSS=sum((y-mean(y)'*(y-mean(y))));
+TSS=sum(((y-mean(y))'*((y-mean(y)))));
 weights= 1./(data_endpoint_3.SD.^2);
 
 %% K=1
