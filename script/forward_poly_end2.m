@@ -17,7 +17,7 @@ y=data_endpoint_2.response;
 
 n=length(y);
 
-TSS=sum((y-mean(y)'*(y-mean(y))));
+TSS=sum(((y-mean(y))'*((y-mean(y)))));
 weights= 1./(data_endpoint_2.SD.^2);
 
 %% K=1
@@ -111,32 +111,32 @@ ylabel("RSS")
 figure
 sgtitle("Objective tests evolution")
 subplot(2,3,1)
-plot(abs([FPE_8 FPE_10 FPE_17 FPE_23 FPE_25 FPE_26 FPE_27]),'-o')
+plot([FPE_8 FPE_10 FPE_17 FPE_23 FPE_25 FPE_26 FPE_27],'-o')
 set(gca,'XTickLabel',[1 4 5 6 7 7 7]);
 grid on
 title("FPE")
 subplot(2,3,2)
-plot(abs([AIC_8 AIC_10 AIC_17 AIC_23 AIC_25 AIC_26 AIC_27]),'-o')
+plot([AIC_8 AIC_10 AIC_17 AIC_23 AIC_25 AIC_26 AIC_27],'-o')
 set(gca,'XTickLabel',[1 4 5 6 7 7 7]);
 grid on
 title("AIC")
 subplot(2,3,3)
-plot(abs([MDL_8 MDL_10 MDL_17 MDL_23 MDL_25 MDL_26 MDL_27]),'-o')
+plot([MDL_8 MDL_10 MDL_17 MDL_23 MDL_25 MDL_26 MDL_27],'-o')
 set(gca,'XTickLabel',[1 4 5 6 7 7 7]);
 grid on
 title("MDL")
 subplot(2,3,4)
-plot(abs([SQUARED_R_8 SQUARED_R_10 SQUARED_R_17 SQUARED_R_23 SQUARED_R_25 SQUARED_R_26 SQUARED_R_27]),'-o')
+plot([SQUARED_R_8 SQUARED_R_10 SQUARED_R_17 SQUARED_R_23 SQUARED_R_25 SQUARED_R_26 SQUARED_R_27],'-o')
 set(gca,'XTickLabel',[1 4 5 6 7 7 7]);
 grid on
 title("R^2")
 subplot(2,3,5)
-plot(abs([Cp_8 Cp_10 Cp_17 Cp_23 Cp_25 Cp_26 Cp_27]),'-o')
+plot([Cp_8 Cp_10 Cp_17 Cp_23 Cp_25 Cp_26 Cp_27],'-o')
 set(gca,'XTickLabel',[1 4 5 6 7 7 7]);
 grid on
 title("C_p")
 subplot(2,3,6)
-plot(abs([BIC_8 BIC_10 BIC_17 BIC_23 BIC_25 BIC_26 BIC_27]),'-o')
+plot([BIC_8 BIC_10 BIC_17 BIC_23 BIC_25 BIC_26 BIC_27],'-o')
 set(gca,'XTickLabel',[1 4 5 6 7 7 7]);
 grid on
 title("BIC")

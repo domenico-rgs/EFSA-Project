@@ -17,7 +17,7 @@ y=data_endpoint_3.response;
 
 n=length(y);
 
-TSS=sum((y-mean(y)'*(y-mean(y))));
+TSS=sum(((y-mean(y))'*((y-mean(y)))));
 weights= 1./(data_endpoint_3.SD.^2);
 
 %% K=1
@@ -116,8 +116,19 @@ phi_39=[ones(n,1) x_1 x_2 x_3 x_2.*x_3 x_1.*x_2 x_1.*x_3];
 [theta_38,std_theta_38, RSS_38] = identificator(phi_38,y, weights);
 [theta_39,std_theta_39, RSS_39] = identificator(phi_39,y, weights);
 
+%% K=7
+phi_40=[ones(n,1) x_1 x_2 x_3 x_2.*x_3 x_1.*x_2 x_2.^2 x_1.^2];
+phi_41=[ones(n,1) x_1 x_2 x_3 x_2.*x_3 x_1.*x_2 x_2.^2 x_3.^2];
+phi_42=[ones(n,1) x_1 x_2 x_3 x_2.*x_3 x_1.*x_2 x_2.^2 x_1.*x_3];
 
-%% BEST MODEL
+[theta_40,std_theta_40, RSS_40] = identificator(phi_40,y, weights);
+[theta_41,std_theta_41, RSS_41] = identificator(phi_41,y, weights);
+[theta_42,std_theta_42, RSS_42] = identificator(phi_42,y, weights);
+
+phi_43=[ones(n,1) x_1 x_2 x_3 x_2.*x_3 x_1.*x_2 x_2.^2 x_1.^2 x_3.^2 x_1.*x_3];
+[theta_43,std_theta_43, RSS_43] = identificator(phi_43,y, weights);
+
+% BEST MODEL
 [FPE_2,AIC_2,MDL_2,SQUARED_R_2,Cp_2,BIC_2] = objectiveTest(n, length(theta_2), RSS_2, TSS);
 [FPE_10,AIC_10,MDL_10,SQUARED_R_10,Cp_10,BIC_10] = objectiveTest(n, length(theta_10), RSS_10, TSS); 
 [FPE_18,AIC_18,MDL_18,SQUARED_R_18,Cp_18,BIC_18] = objectiveTest(n, length(theta_18), RSS_18, TSS);
@@ -126,6 +137,7 @@ phi_39=[ones(n,1) x_1 x_2 x_3 x_2.*x_3 x_1.*x_2 x_1.*x_3];
 [FPE_37,AIC_37,MDL_37,SQUARED_R_37,Cp_37,BIC_37] = objectiveTest(n, length(theta_37), RSS_37, TSS);
 
 %% Plot
+%RSS
 figure
 plot([RSS_2 RSS_10 RSS_18 RSS_28 RSS_34 RSS_37])
 grid on
@@ -134,21 +146,21 @@ title("RSS through models")
 xlabel("n° of predictors")
 ylabel("RSS")
 
-% Objective test
+%Objective test
 figure
 sgtitle("Objective tests evolution")
 subplot(2,3,1)
-plot(abs([FPE_2 FPE_10 FPE_18 FPE_28 FPE_34 FPE_37]),'-o')
+plot([FPE_2 FPE_10 FPE_18 FPE_28 FPE_34 FPE_37],'-o')
 set(gca,'XTickLabel',[1 2 3 4 5 6 6]);
 grid on
 title("FPE")
 subplot(2,3,2)
-plot(abs([AIC_2 AIC_10 AIC_18 AIC_28 AIC_34 AIC_37]),'-o')
+plot([AIC_2 AIC_10 AIC_18 AIC_28 AIC_34 AIC_37],'-o')
 set(gca,'XTickLabel',[1 2 3 4 5 6 6]);
 grid on
 title("AIC")
 subplot(2,3,3)
-plot(abs([MDL_2 MDL_10 MDL_18 MDL_28 MDL_34 MDL_37]),'-o')
+plot([MDL_2 MDL_10 MDL_18 MDL_28 MDL_34 MDL_37],'-o')
 set(gca,'XTickLabel',[1 2 3 4 5 6 6]);
 grid on
 title("MDL")
@@ -163,7 +175,7 @@ set(gca,'XTickLabel',[1 2 3 4 5 6 6]);
 grid on
 title("C_p")
 subplot(2,3,6)
-plot(abs([BIC_2 BIC_10 BIC_18 BIC_28 BIC_34 BIC_37]),'-o')
+plot([BIC_2 BIC_10 BIC_18 BIC_28 BIC_34 BIC_37],'-o')
 set(gca,'XTickLabel',[1 2 3 4 5 6 6]);
 grid on
 title("BIC")
