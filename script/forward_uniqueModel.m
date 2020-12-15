@@ -20,7 +20,7 @@ x_5 = DUMMY(:,2); %dummy variable for endpoint 2
 y=data.response;
 
 n=length(y);
-TSS=sum((y-mean(y)'*(y-mean(y))));
+TSS=sum(((y-mean(y))'*((y-mean(y)))));
 
 weights= 1./(data.SD.^2);
 
