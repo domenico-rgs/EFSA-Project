@@ -58,7 +58,6 @@ subplot(1,3,2)
 bar([RSS_4 RSS_5])
 grid on
 set(gca,'XTickLabel',[4 5]);
-xlabel("models")
 subplot(1,3,3)
 bar([RSS_6])
 grid on
