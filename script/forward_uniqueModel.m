@@ -23,7 +23,7 @@ y=data.response;
 n=length(y);
 TSS=sum(((y-mean(y))'*((y-mean(y)))));
 
-weights= 1./((data.SD./data.numberOfAnimals).^2);
+weights= 1./((data.SD./sqrt(data.numberOfAnimals)).^2);
 
 %% K=1
 phi_1=[ones(n,1) x_1];

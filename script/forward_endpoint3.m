@@ -19,7 +19,7 @@ y=data_endpoint_3.response;
 n=length(y);
 
 TSS=sum(((y-mean(y))'*((y-mean(y)))));
-weights= 1./((data_endpoint_3.SD./data_endpoint_3.numberOfAnimals).^2);
+weights= 1./((data_endpoint_3.SD./sqrt(data_endpoint_3.numberOfAnimals)).^2);
 
 %% K=1
 phi_1=[ones(n,1) x_1];
