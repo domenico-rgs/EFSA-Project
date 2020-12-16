@@ -1,4 +1,4 @@
-%% Subset Selection - endpoint 2
+%% Subset Selection - endpoint 3
 
 close all
 clear all
@@ -10,16 +10,16 @@ warning('OFF', 'MATLAB:table:ModifiedAndSavedVarnames')
 data=readtable('../data/MiniProjectEFSA.xlsx', opts);
 data.Properties.VariableNames={'response','numberOfAnimals','SD','dose','sex','endpoint'};
 
-data_endpoint_2=data(data.endpoint==2,:);
-x_1 = data_endpoint_2.sex;
-x_2 = data_endpoint_2.dose;
-x_3= data_endpoint_2.numberOfAnimals;
-y=data_endpoint_2.response;
+data_endpoint_3=data(data.endpoint==3,:);
+x_1 = data_endpoint_3.sex;
+x_2 = data_endpoint_3.dose;
+x_3= data_endpoint_3.numberOfAnimals;
+y=data_endpoint_3.response;
 
 n=length(y);
 
 TSS=sum(((y-mean(y))'*((y-mean(y)))));
-weights= 1./((data_endpoint_2.SD./sqrt(data_endpoint_2.numberOfAnimals)).^2); % 1/std.err^2
+weights= 1./((data_endpoint_3.SD./sqrt(data_endpoint_3.numberOfAnimals)).^2);
 
 %% K=1
 phi_1=[ones(n,1) x_1];
@@ -95,13 +95,13 @@ title("BIC")
 
 %Male Model
 dose=[0, 30, 100, 150];
-male_data=data(data.endpoint==2&data.sex==0,:);
+male_data=data(data.endpoint==3&data.sex==0,:);
 
 y_hat_1_male = theta_1(1)+theta_1(2)*0+ones(1,4);
 y_hat_2_male = theta_2(1)+theta_2(2)*dose;
 y_hat_3_male = theta_3(1)+theta_3(2)*male_data.numberOfAnimals;
 y_hat_4_male = theta_4(1)+theta_4(2)*dose+theta_4(3)*0;
-y_hat_5_male = theta_5(1)+theta_5(2)*dose+(theta_5(3)*male_data.numberOfAnimals)';
+y_hat_5_male = theta_5(1)+theta_5(2)*dose+theta_5(3)*male_data.numberOfAnimals;
 y_hat_6_male = theta_6(1)+theta_6(2)*dose+theta_6(3)*0+(theta_6(4)*male_data.numberOfAnimals)';
 
 y_male=male_data.response;
@@ -121,20 +121,20 @@ plot(dose,y_hat_6_male,"--y")
 hold on
 plot(dose,y_male,"*k")
 grid on
-title("Male - endpoint 2")
+title("Male - endpoint 1")
 xlabel("dose")
 ylabel("response")
 legend("1 predictor","","","2 predictors","","3 predictors")
 
 %Female Model
 dose=[0, 30, 100, 150];
-female_data=data(data.endpoint==2&data.sex==1,:);
+female_data=data(data.endpoint==1&data.sex==1,:);
 
 y_hat_1_female = theta_1(1)+theta_1(2)*1+ones(1,4);
 y_hat_2_female = theta_2(1)+theta_2(2)*dose;
 y_hat_3_female = theta_3(1)+theta_3(2)*female_data.numberOfAnimals;
-y_hat_4_female = theta_4(1)+theta_4(2)*dose+theta_4(3)*1;
-y_hat_5_female = theta_5(1)+theta_5(2)*dose+(theta_5(3)*female_data.numberOfAnimals)';
+y_hat_4_female = theta_4(1)+theta_4(2)*dose+theta_4(3)*do;
+y_hat_5_female = theta_5(1)+theta_5(2)*dose+theta_5(3)*female_data.numberOfAnimals;
 y_hat_6_female = theta_6(1)+theta_6(2)*dose+theta_6(3)*1+(theta_6(4)*female_data.numberOfAnimals)';
 
 y_female=female_data.response;

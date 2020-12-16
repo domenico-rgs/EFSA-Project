@@ -92,3 +92,69 @@ subplot(2,3,6)
 plot(x,[BIC_2 BIC_4 BIC_6],'-o')
 grid on
 title("BIC")
+
+%Male Model
+dose=[0, 30, 100, 150];
+male_data=data(data.endpoint==3&data.sex==0,:);
+
+y_hat_1_male = theta_1(1)+theta_1(2)*0+ones(1,4);
+y_hat_2_male = theta_2(1)+theta_2(2)*dose;
+y_hat_3_male = theta_3(1)+theta_3(2)*male_data.numberOfAnimals;
+y_hat_4_male = theta_4(1)+theta_4(2)*dose+theta_4(3)*0;
+y_hat_5_male = theta_5(1)+theta_5(2)*dose+(theta_5(3)*male_data.numberOfAnimals)';
+y_hat_6_male = theta_6(1)+theta_6(2)*dose+theta_6(3)*0+(theta_6(4)*male_data.numberOfAnimals)';
+
+y_male=male_data.response;
+
+figure
+plot(dose,y_hat_1_male,"--c")
+hold on
+plot(dose,y_hat_2_male,"--c")
+hold on
+plot(dose,y_hat_3_male,"--c")
+hold on
+plot(dose,y_hat_4_male,"b","linewidth",2)
+hold on
+plot(dose,y_hat_5_male,"--b")
+hold on
+plot(dose,y_hat_6_male,"--y")
+hold on
+plot(dose,y_male,"*k")
+grid on
+title("Male - endpoint 3")
+xlabel("dose")
+ylabel("response")
+legend("1 predictor","","","2 predictors","","3 predictors")
+
+%Female Model
+dose=[0, 30, 100, 150];
+female_data=data(data.endpoint==3&data.sex==1,:);
+
+y_hat_1_female = theta_1(1)+theta_1(2)*1+ones(1,4);
+y_hat_2_female = theta_2(1)+theta_2(2)*dose;
+y_hat_3_female = theta_3(1)+theta_3(2)*female_data.numberOfAnimals;
+y_hat_4_female = theta_4(1)+theta_4(2)*dose+theta_4(3)*1;
+y_hat_5_female = theta_5(1)+theta_5(2)*dose+(theta_5(3)*female_data.numberOfAnimals)';
+y_hat_6_female = theta_6(1)+theta_6(2)*dose+theta_6(3)*1+(theta_6(4)*female_data.numberOfAnimals)';
+
+y_female=female_data.response;
+
+figure
+plot(dose,y_hat_1_female,"--c")
+hold on
+plot(dose,y_hat_2_female,"--c")
+hold on
+plot(dose,y_hat_3_female,"--c")
+hold on
+plot(dose,y_hat_4_female,"b","linewidth",2)
+hold on
+plot(dose,y_hat_5_female,"--b")
+hold on
+plot(dose,y_hat_6_female,"--y")
+hold on
+plot(dose,y_female,"*k")
+grid on
+title("Female - endpoint 3")
+xlabel("dose")
+ylabel("response")
+legend("1 predictor","","","2 predictors","","3 predictors")
