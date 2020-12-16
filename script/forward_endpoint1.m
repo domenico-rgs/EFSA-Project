@@ -1,14 +1,15 @@
+%% Subset Selection - endpoint 1
+
 close all
 clear all
 clc
 
-%% Import dati
+%% Data import
 opts=detectImportOptions('../data/MiniProjectEFSA.xlsx');
 warning('OFF', 'MATLAB:table:ModifiedAndSavedVarnames')
 data=readtable('../data/MiniProjectEFSA.xlsx', opts);
 data.Properties.VariableNames={'response','numberOfAnimals','SD','dose','sex','endpoint'};
 
-%% Subset Selection - endpoint 1
 data_endpoint_1=data(data.endpoint==1,:);
 x_1 = data_endpoint_1.sex;
 x_2 = data_endpoint_1.dose;
@@ -18,7 +19,7 @@ y=data_endpoint_1.response;
 n=length(y);
 
 TSS=sum(((y-mean(y))'*((y-mean(y)))));
-weights= 1./(data_endpoint_1.SD.^2);
+weights= 1./((data_endpoint_1.SD./data_endpoint_1.numberOfAnimals).^2);
 
 %% K=1
 phi_1=[ones(n,1) x_1];
@@ -46,7 +47,7 @@ phi_6=[ones(n,1) x_1 x_2 x_3];
 [FPE_4,AIC_4,MDL_4,SQUARED_R_4,Cp_4,BIC_4] = objectiveTest(n, length(theta_4), RSS_4, TSS); %winner
 [FPE_6,AIC_6,MDL_6,SQUARED_R_6,Cp_6,BIC_6] = objectiveTest(n, length(theta_6), RSS_6, TSS);
 
-%% Result plot
+%% Results plot
 %RSS
 figure
 sgtitle("RSS for each iteration")

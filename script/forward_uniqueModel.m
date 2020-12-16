@@ -1,9 +1,10 @@
 %% Unique model
+
 close all
 clear all
 clc
 
-%% Import dati
+%% Data import
 opts=detectImportOptions('../data/MiniProjectEFSA.xlsx');
 warning('OFF', 'MATLAB:table:ModifiedAndSavedVarnames')
 data=readtable('../data/MiniProjectEFSA.xlsx', opts);
@@ -22,7 +23,7 @@ y=data.response;
 n=length(y);
 TSS=sum(((y-mean(y))'*((y-mean(y)))));
 
-weights= 1./(data.SD.^2);
+weights= 1./((data.SD./data.numberOfAnimals).^2);
 
 %% K=1
 phi_1=[ones(n,1) x_1];
@@ -34,7 +35,7 @@ phi_5=[ones(n,1) x_5];
 [theta_1,std_theta_1, RSS_1] = identificator(phi_1,y, weights);
 [theta_2,std_theta_2, RSS_2] = identificator(phi_2,y, weights);
 [theta_3,std_theta_3, RSS_3] = identificator(phi_3,y, weights); 
-[theta_4,std_theta_4, RSS_4] = identificator(phi_4,y, weights); %best
+[theta_4,std_theta_4, RSS_4] = identificator(phi_4,y, weights); %better
 [theta_5,std_theta_5, RSS_5] = identificator(phi_5,y, weights); 
 
 
@@ -46,7 +47,7 @@ phi_9=[ones(n,1) x_3 x_5];
 
 [theta_6,std_theta_6, RSS_6] = identificator(phi_6,y, weights);
 [theta_7,std_theta_7, RSS_7] = identificator(phi_7,y, weights); 
-[theta_8,std_theta_8, RSS_8] = identificator(phi_8,y, weights); %best
+[theta_8,std_theta_8, RSS_8] = identificator(phi_8,y, weights); %better
 [theta_9,std_theta_9, RSS_9] = identificator(phi_9,y, weights);
 
 %% K=3
@@ -55,14 +56,14 @@ phi_11=[ones(n,1) x_3 x_2 x_4];
 phi_12=[ones(n,1) x_3 x_2 x_5];
 
 [theta_10,std_theta_10, RSS_10] = identificator(phi_10,y, weights); 
-[theta_11,std_theta_11, RSS_11] = identificator(phi_11,y, weights); %best
+[theta_11,std_theta_11, RSS_11] = identificator(phi_11,y, weights); %better
 [theta_12,std_theta_12, RSS_12] = identificator(phi_12,y, weights);
 
 %% K=4
 phi_13=[ones(n,1) x_3 x_2 x_1 x_4];
 phi_14=[ones(n,1) x_3 x_2 x_1 x_5];
 
-[theta_13,std_theta_13, RSS_13] = identificator(phi_13,y, weights); %best
+[theta_13,std_theta_13, RSS_13] = identificator(phi_13,y, weights); %better
 [theta_14,std_theta_14, RSS_14] = identificator(phi_14,y, weights); 
 
 %% K=5
@@ -77,7 +78,7 @@ phi_15=[ones(n,1) x_3 x_2 x_1 x_5 x_4];
 [FPE_13,AIC_13,MDL_13,SQUARED_R_13,Cp_13,BIC_13] = objectiveTest(n, length(theta_13), RSS_13, TSS);
 [FPE_15,AIC_15,MDL_15,SQUARED_R_15,Cp_15,BIC_15] = objectiveTest(n, length(theta_15), RSS_15, TSS); 
 
-%% Result plot
+%% Results plot
 %RSS
 figure
 sgtitle("RSS at each subset selection iteration")
