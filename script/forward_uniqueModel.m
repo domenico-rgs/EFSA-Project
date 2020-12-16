@@ -131,3 +131,357 @@ subplot(2,3,6)
 plot(x,[BIC_4 BIC_8 BIC_11 BIC_13 BIC_15],'-o')
 grid on
 title("BIC")
+
+%Male Model - endpoint1
+dose=[0, 30, 100, 150];
+male_data_end1=data(data.sex==0&data.endpoint==1,:);
+
+y_hat_1_male = theta_1(1)+theta_1(2)*0+ones(1,4);
+y_hat_2_male = theta_2(1)+theta_2(2)*dose;
+y_hat_3_male = theta_3(1)+(theta_3(2)*male_data_end1.numberOfAnimals);
+y_hat_4_male = theta_4(1)+theta_4(2)*1+ones(1,4);
+y_hat_5_male = theta_5(1)+theta_5(2)*0+ones(1,4);
+y_hat_6_male = theta_6(1)+(theta_6(2)*male_data_end1.numberOfAnimals)+theta_6(3)*0;
+y_hat_7_male = theta_7(1)+(theta_7(2)*male_data_end1.numberOfAnimals)'+theta_7(3)*dose;
+y_hat_8_male = theta_8(1)+(theta_8(2)*male_data_end1.numberOfAnimals)+theta_8(3)*1;
+y_hat_9_male = theta_9(1)+(theta_9(2)*male_data_end1.numberOfAnimals)+theta_9(3)*0;
+y_hat_10_male = theta_10(1)+(theta_10(2)*male_data_end1.numberOfAnimals)'+theta_10(3)*dose+theta_10(4)*0;
+y_hat_11_male = theta_11(1)+(theta_11(2)*male_data_end1.numberOfAnimals)'+theta_11(3)*dose+theta_11(4)*1;
+y_hat_12_male = theta_12(1)+(theta_12(2)*male_data_end1.numberOfAnimals)'+theta_12(3)*dose+theta_12(4)*0;
+y_hat_13_male = theta_13(1)+(theta_13(2)*male_data_end1.numberOfAnimals)'+theta_13(3)*dose+theta_13(4)*0+theta_13(5)*1;
+y_hat_14_male = theta_14(1)+(theta_14(2)*male_data_end1.numberOfAnimals)'+theta_14(3)*dose+theta_14(4)*0+theta_14(5)*0;
+y_hat_15_male = theta_15(1)+(theta_15(2)*male_data_end1.numberOfAnimals)'+theta_15(3)*dose+theta_15(4)*0+theta_15(5)*0+theta_15(6)*1;
+
+y_male_end1=male_data_end1.response;
+
+figure
+plot(dose,y_hat_1_male,"--b")
+hold on
+plot(dose,y_hat_2_male,"--b")
+hold on
+plot(dose,y_hat_3_male,"--b")
+hold on
+plot(dose,y_hat_4_male,"--b","linewidth",2)
+hold on
+plot(dose,y_hat_5_male,"--b")
+hold on
+plot(dose,y_hat_6_male,"--c")
+hold on
+plot(dose,y_hat_7_male,"--c")
+hold on
+plot(dose,y_hat_8_male,"--c")
+hold on
+plot(dose,y_hat_9_male,"--c")
+hold on
+plot(dose,y_hat_10_male,"--y")
+hold on
+plot(dose,y_hat_11_male,"--y")
+hold on
+plot(dose,y_hat_12_male,"--y")
+hold on
+plot(dose,y_hat_13_male,"--g")
+hold on
+plot(dose,y_hat_14_male,"--g")
+hold on
+plot(dose,y_hat_15_male,"--m")
+hold on
+plot(dose,y_male_end1,"*k")
+grid on
+title("Male - endpoint 1 - uniquemodel")
+xlabel("dose")
+ylabel("response")
+
+%Male Model - endpoint2
+dose=[0, 30, 100, 150];
+male_data_end2=data(data.sex==0&data.endpoint==2,:);
+
+y_hat_1_male = theta_1(1)+theta_1(2)*0+ones(1,4);
+y_hat_2_male = theta_2(1)+theta_2(2)*dose;
+y_hat_3_male = theta_3(1)+(theta_3(2)*male_data_end2.numberOfAnimals);
+y_hat_4_male = theta_4(1)+theta_4(2)*0+ones(1,4);
+y_hat_5_male = theta_5(1)+theta_5(2)*1+ones(1,4);
+y_hat_6_male = theta_6(1)+(theta_6(2)*male_data_end2.numberOfAnimals)+theta_6(3)*0;
+y_hat_7_male = theta_7(1)+(theta_7(2)*male_data_end2.numberOfAnimals)'+theta_7(3)*dose;
+y_hat_8_male = theta_8(1)+(theta_8(2)*male_data_end2.numberOfAnimals)+theta_8(3)*0;
+y_hat_9_male = theta_9(1)+(theta_9(2)*male_data_end2.numberOfAnimals)+theta_9(3)*1;
+y_hat_10_male = theta_10(1)+(theta_10(2)*male_data_end2.numberOfAnimals)'+theta_10(3)*dose+theta_10(4)*0;
+y_hat_11_male = theta_11(1)+(theta_11(2)*male_data_end2.numberOfAnimals)'+theta_11(3)*dose+theta_11(4)*0;
+y_hat_12_male = theta_12(1)+(theta_12(2)*male_data_end2.numberOfAnimals)'+theta_12(3)*dose+theta_12(4)*1;
+y_hat_13_male = theta_13(1)+(theta_13(2)*male_data_end2.numberOfAnimals)'+theta_13(3)*dose+theta_13(4)*0+theta_13(5)*0;
+y_hat_14_male = theta_14(1)+(theta_14(2)*male_data_end2.numberOfAnimals)'+theta_14(3)*dose+theta_14(4)*0+theta_14(5)*1;
+y_hat_15_male = theta_15(1)+(theta_15(2)*male_data_end2.numberOfAnimals)'+theta_15(3)*dose+theta_15(4)*0+theta_15(5)*1+theta_15(6)*0;
+
+y_male_end2=male_data_end2.response;
+
+figure
+plot(dose,y_hat_1_male,"--b")
+hold on
+plot(dose,y_hat_2_male,"--b")
+hold on
+plot(dose,y_hat_3_male,"--b")
+hold on
+plot(dose,y_hat_4_male,"--b","linewidth",2)
+hold on
+plot(dose,y_hat_5_male,"--b")
+hold on
+plot(dose,y_hat_6_male,"--c")
+hold on
+plot(dose,y_hat_7_male,"--c")
+hold on
+plot(dose,y_hat_8_male,"--c")
+hold on
+plot(dose,y_hat_9_male,"--c")
+hold on
+plot(dose,y_hat_10_male,"--y")
+hold on
+plot(dose,y_hat_11_male,"--y")
+hold on
+plot(dose,y_hat_12_male,"--y")
+hold on
+plot(dose,y_hat_13_male,"--g")
+hold on
+plot(dose,y_hat_14_male,"--g")
+hold on
+plot(dose,y_hat_15_male,"--m")
+hold on
+plot(dose,y_male_end2,"*k")
+grid on
+title("Male - endpoint 2 - uniquemodel")
+xlabel("dose")
+ylabel("response")
+
+%Male Model - endpoint3
+dose=[0, 30, 100, 150];
+male_data_end3=data(data.sex==0&data.endpoint==3,:);
+
+y_hat_1_male = theta_1(1)+theta_1(2)*0+ones(1,4);
+y_hat_2_male = theta_2(1)+theta_2(2)*dose;
+y_hat_3_male = theta_3(1)+(theta_3(2)*male_data_end3.numberOfAnimals);
+y_hat_4_male = theta_4(1)+theta_4(2)*0+ones(1,4);
+y_hat_5_male = theta_5(1)+theta_5(2)*0+ones(1,4);
+y_hat_6_male = theta_6(1)+(theta_6(2)*male_data_end3.numberOfAnimals)+theta_6(3)*0;
+y_hat_7_male = theta_7(1)+(theta_7(2)*male_data_end3.numberOfAnimals)'+theta_7(3)*dose;
+y_hat_8_male = theta_8(1)+(theta_8(2)*male_data_end3.numberOfAnimals)+theta_8(3)*0;
+y_hat_9_male = theta_9(1)+(theta_9(2)*male_data_end3.numberOfAnimals)+theta_9(3)*0;
+y_hat_10_male = theta_10(1)+(theta_10(2)*male_data_end3.numberOfAnimals)'+theta_10(3)*dose+theta_10(4)*0;
+y_hat_11_male = theta_11(1)+(theta_11(2)*male_data_end3.numberOfAnimals)'+theta_11(3)*dose+theta_11(4)*0;
+y_hat_12_male = theta_12(1)+(theta_12(2)*male_data_end3.numberOfAnimals)'+theta_12(3)*dose+theta_12(4)*0;
+y_hat_13_male = theta_13(1)+(theta_13(2)*male_data_end3.numberOfAnimals)'+theta_13(3)*dose+theta_13(4)*0+theta_13(5)*0;
+y_hat_14_male = theta_14(1)+(theta_14(2)*male_data_end3.numberOfAnimals)'+theta_14(3)*dose+theta_14(4)*0+theta_14(5)*0;
+y_hat_15_male = theta_15(1)+(theta_15(2)*male_data_end3.numberOfAnimals)'+theta_15(3)*dose+theta_15(4)*0+theta_15(5)*0+theta_15(6)*0;
+
+y_male_end3=male_data_end3.response;
+
+figure
+plot(dose,y_hat_1_male,"--b")
+hold on
+plot(dose,y_hat_2_male,"--b")
+hold on
+plot(dose,y_hat_3_male,"--b")
+hold on
+plot(dose,y_hat_4_male,"--b","linewidth",2)
+hold on
+plot(dose,y_hat_5_male,"--b")
+hold on
+plot(dose,y_hat_6_male,"--c")
+hold on
+plot(dose,y_hat_7_male,"--c")
+hold on
+plot(dose,y_hat_8_male,"--c")
+hold on
+plot(dose,y_hat_9_male,"--c")
+hold on
+plot(dose,y_hat_10_male,"--y")
+hold on
+plot(dose,y_hat_11_male,"--y")
+hold on
+plot(dose,y_hat_12_male,"--y")
+hold on
+plot(dose,y_hat_13_male,"--g")
+hold on
+plot(dose,y_hat_14_male,"--g")
+hold on
+plot(dose,y_hat_15_male,"--m")
+hold on
+plot(dose,y_male_end3,"*k")
+grid on
+title("Male - endpoint 3 - uniquemodel")
+xlabel("dose")
+ylabel("response")
+
+%Female Model - endpoint1
+dose=[0, 30, 100, 150];
+female_data_end1=data(data.sex==1&data.endpoint==1,:);
+
+y_hat_1_female = theta_1(1)+theta_1(2)*1+ones(1,4);
+y_hat_2_female = theta_2(1)+theta_2(2)*dose;
+y_hat_3_female = theta_3(1)+(theta_3(2)*female_data_end1.numberOfAnimals);
+y_hat_4_female = theta_4(1)+theta_4(2)*1+ones(1,4);
+y_hat_5_female = theta_5(1)+theta_5(2)*0+ones(1,4);
+y_hat_6_female = theta_6(1)+(theta_6(2)*female_data_end1.numberOfAnimals)+theta_6(3)*1;
+y_hat_7_female = theta_7(1)+(theta_7(2)*female_data_end1.numberOfAnimals)'+theta_7(3)*dose;
+y_hat_8_female = theta_8(1)+(theta_8(2)*female_data_end1.numberOfAnimals)+theta_8(3)*1;
+y_hat_9_female = theta_9(1)+(theta_9(2)*female_data_end1.numberOfAnimals)+theta_9(3)*0;
+y_hat_10_female = theta_10(1)+(theta_10(2)*female_data_end1.numberOfAnimals)'+theta_10(3)*dose+theta_10(4)*1;
+y_hat_11_female = theta_11(1)+(theta_11(2)*female_data_end1.numberOfAnimals)'+theta_11(3)*dose+theta_11(4)*1;
+y_hat_12_female = theta_12(1)+(theta_12(2)*female_data_end1.numberOfAnimals)'+theta_12(3)*dose+theta_12(4)*0;
+y_hat_13_female = theta_13(1)+(theta_13(2)*female_data_end1.numberOfAnimals)'+theta_13(3)*dose+theta_13(4)*1+theta_13(5)*1;
+y_hat_14_female = theta_14(1)+(theta_14(2)*female_data_end1.numberOfAnimals)'+theta_14(3)*dose+theta_14(4)*1+theta_14(5)*0;
+y_hat_15_female = theta_15(1)+(theta_15(2)*female_data_end1.numberOfAnimals)'+theta_15(3)*dose+theta_15(4)*1+theta_15(5)*0+theta_15(6)*1;
+
+y_female_end1=female_data_end1.response;
+
+figure
+plot(dose,y_hat_1_female,"--b")
+hold on
+plot(dose,y_hat_2_female,"--b")
+hold on
+plot(dose,y_hat_3_female,"--b")
+hold on
+plot(dose,y_hat_4_female,"--b","linewidth",2)
+hold on
+plot(dose,y_hat_5_female,"--b")
+hold on
+plot(dose,y_hat_6_female,"--c")
+hold on
+plot(dose,y_hat_7_female,"--c")
+hold on
+plot(dose,y_hat_8_female,"--c")
+hold on
+plot(dose,y_hat_9_female,"--c")
+hold on
+plot(dose,y_hat_10_female,"--y")
+hold on
+plot(dose,y_hat_11_female,"--y")
+hold on
+plot(dose,y_hat_12_female,"--y")
+hold on
+plot(dose,y_hat_13_female,"--g")
+hold on
+plot(dose,y_hat_14_female,"--g")
+hold on
+plot(dose,y_hat_15_female,"--m")
+hold on
+plot(dose,y_female_end1,"*k")
+grid on
+title("Female - endpoint 1 - uniquemodel")
+xlabel("dose")
+ylabel("response")
+
+%Female Model - endpoint2
+dose=[0, 30, 100, 150];
+female_data_end2=data(data.sex==1&data.endpoint==2,:);
+
+y_hat_1_female = theta_1(1)+theta_1(2)*1+ones(1,4);
+y_hat_2_female = theta_2(1)+theta_2(2)*dose;
+y_hat_3_female = theta_3(1)+(theta_3(2)*female_data_end2.numberOfAnimals);
+y_hat_4_female = theta_4(1)+theta_4(2)*0+ones(1,4);
+y_hat_5_female = theta_5(1)+theta_5(2)*1+ones(1,4);
+y_hat_6_female = theta_6(1)+(theta_6(2)*female_data_end2.numberOfAnimals)+theta_6(3)*1;
+y_hat_7_female = theta_7(1)+(theta_7(2)*female_data_end2.numberOfAnimals)'+theta_7(3)*dose;
+y_hat_8_female = theta_8(1)+(theta_8(2)*female_data_end2.numberOfAnimals)+theta_8(3)*0;
+y_hat_9_female = theta_9(1)+(theta_9(2)*female_data_end2.numberOfAnimals)+theta_9(3)*1;
+y_hat_10_female = theta_10(1)+(theta_10(2)*female_data_end2.numberOfAnimals)'+theta_10(3)*dose+theta_10(4)*1;
+y_hat_11_female = theta_11(1)+(theta_11(2)*female_data_end2.numberOfAnimals)'+theta_11(3)*dose+theta_11(4)*0;
+y_hat_12_female = theta_12(1)+(theta_12(2)*female_data_end2.numberOfAnimals)'+theta_12(3)*dose+theta_12(4)*1;
+y_hat_13_female = theta_13(1)+(theta_13(2)*female_data_end2.numberOfAnimals)'+theta_13(3)*dose+theta_13(4)*1+theta_13(5)*0;
+y_hat_14_female = theta_14(1)+(theta_14(2)*female_data_end2.numberOfAnimals)'+theta_14(3)*dose+theta_14(4)*1+theta_14(5)*1;
+y_hat_15_female = theta_15(1)+(theta_15(2)*female_data_end2.numberOfAnimals)'+theta_15(3)*dose+theta_15(4)*1+theta_15(5)*1+theta_15(6)*0;
+
+y_female_end2=female_data_end2.response;
+
+figure
+plot(dose,y_hat_1_female,"--b")
+hold on
+plot(dose,y_hat_2_female,"--b")
+hold on
+plot(dose,y_hat_3_female,"--b")
+hold on
+plot(dose,y_hat_4_female,"--b","linewidth",2)
+hold on
+plot(dose,y_hat_5_female,"--b")
+hold on
+plot(dose,y_hat_6_female,"--c")
+hold on
+plot(dose,y_hat_7_female,"--c")
+hold on
+plot(dose,y_hat_8_female,"--c")
+hold on
+plot(dose,y_hat_9_female,"--c")
+hold on
+plot(dose,y_hat_10_female,"--y")
+hold on
+plot(dose,y_hat_11_female,"--y")
+hold on
+plot(dose,y_hat_12_female,"--y")
+hold on
+plot(dose,y_hat_13_female,"--g")
+hold on
+plot(dose,y_hat_14_female,"--g")
+hold on
+plot(dose,y_hat_15_female,"--m")
+hold on
+plot(dose,y_female_end2,"*k")
+grid on
+title("Female - endpoint 2 - uniquemodel")
+xlabel("dose")
+ylabel("response")
+
+%Female Model - endpoint3
+dose=[0, 30, 100, 150];
+female_data_end3=data(data.sex==1&data.endpoint==3,:);
+
+y_hat_1_female = theta_1(1)+theta_1(2)*1+ones(1,4);
+y_hat_2_female = theta_2(1)+theta_2(2)*dose;
+y_hat_3_female = theta_3(1)+(theta_3(2)*female_data_end3.numberOfAnimals);
+y_hat_4_female = theta_4(1)+theta_4(2)*0+ones(1,4);
+y_hat_5_female = theta_5(1)+theta_5(2)*0+ones(1,4);
+y_hat_6_female = theta_6(1)+(theta_6(2)*female_data_end3.numberOfAnimals)+theta_6(3)*1;
+y_hat_7_female = theta_7(1)+(theta_7(2)*female_data_end3.numberOfAnimals)'+theta_7(3)*dose;
+y_hat_8_female = theta_8(1)+(theta_8(2)*female_data_end3.numberOfAnimals)+theta_8(3)*0;
+y_hat_9_female = theta_9(1)+(theta_9(2)*female_data_end3.numberOfAnimals)+theta_9(3)*0;
+y_hat_10_female = theta_10(1)+(theta_10(2)*female_data_end3.numberOfAnimals)'+theta_10(3)*dose+theta_10(4)*1;
+y_hat_11_female = theta_11(1)+(theta_11(2)*female_data_end3.numberOfAnimals)'+theta_11(3)*dose+theta_11(4)*0;
+y_hat_12_female = theta_12(1)+(theta_12(2)*female_data_end3.numberOfAnimals)'+theta_12(3)*dose+theta_12(4)*0;
+y_hat_13_female = theta_13(1)+(theta_13(2)*female_data_end3.numberOfAnimals)'+theta_13(3)*dose+theta_13(4)*1+theta_13(5)*0;
+y_hat_14_female = theta_14(1)+(theta_14(2)*female_data_end3.numberOfAnimals)'+theta_14(3)*dose+theta_14(4)*1+theta_14(5)*0;
+y_hat_15_female = theta_15(1)+(theta_15(2)*female_data_end3.numberOfAnimals)'+theta_15(3)*dose+theta_15(4)*1+theta_15(5)*0+theta_15(6)*0;
+
+y_female_end3=female_data_end3.response;
+
+figure
+plot(dose,y_hat_1_female,"--b")
+hold on
+plot(dose,y_hat_2_female,"--b")
+hold on
+plot(dose,y_hat_3_female,"--b")
+hold on
+plot(dose,y_hat_4_female,"--b","linewidth",2)
+hold on
+plot(dose,y_hat_5_female,"--b")
+hold on
+plot(dose,y_hat_6_female,"--c")
+hold on
+plot(dose,y_hat_7_female,"--c")
+hold on
+plot(dose,y_hat_8_female,"--c")
+hold on
+plot(dose,y_hat_9_female,"--c")
+hold on
+plot(dose,y_hat_10_female,"--y")
+hold on
+plot(dose,y_hat_11_female,"--y")
+hold on
+plot(dose,y_hat_12_female,"--y")
+hold on
+plot(dose,y_hat_13_female,"--g")
+hold on
+plot(dose,y_hat_14_female,"--g")
+hold on
+plot(dose,y_hat_15_female,"--m")
+hold on
+plot(dose,y_female_end3,"*k")
+grid on
+title("Female - endpoint 3 - uniquemodel")
+xlabel("dose")
+ylabel("response")
