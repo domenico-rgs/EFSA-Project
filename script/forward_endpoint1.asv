@@ -93,7 +93,16 @@ plot(x,[BIC_1 BIC_4 BIC_6],'-o')
 grid on
 title("BIC")
 
-%Male Model
+%RSS total
+figure	
+plot([RSS_1 RSS_4 RSS_6])	
+grid on
+set(gca,'XTickLabel',[1 4 6]);	
+title("RSS through models")	
+xlabel("n° of predictors")	
+ylabel("RSS")
+
+%Model
 dose=[0, 30, 100, 150];
 male_data=data(data.endpoint==1&data.sex==0,:);
 
@@ -109,52 +118,48 @@ y_male=male_data.response;
 figure
 plot(dose,y_hat_1_male,"--c")
 hold on
-plot(dose,y_hat_2_male,"--c")
+plot(dose,y_hat_2_male,"--g")
 hold on
-plot(dose,y_hat_3_male,"--c")
+plot(dose,y_hat_3_male,"--r")
 hold on
 plot(dose,y_hat_4_male,"b","linewidth",2)
 hold on
-plot(dose,y_hat_5_male,"--b")
+plot(dose,y_hat_5_male,"--m")
 hold on
 plot(dose,y_hat_6_male,"--y")
 hold on
 plot(dose,y_male,"*k")
 grid on
-title("Male - endpoint 1")
+title("Male")
 xlabel("dose")
 ylabel("response")
-legend("1 predictor","","","2 predictors","","3 predictors")
 
-%Female Model
-dose=[0, 30, 100, 150];
-female_data=data(data.endpoint==1&data.sex==1,:);
-
-y_hat_1_female = theta_1(1)+theta_1(2)*1+ones(1,4);
-y_hat_2_female = theta_2(1)+theta_2(2)*dose;
-y_hat_3_female = theta_3(1)+theta_3(2)*female_data.numberOfAnimals;
-y_hat_4_female = theta_4(1)+theta_4(2)*1+theta_4(3)*dose;
-y_hat_5_female = theta_5(1)+theta_5(2)*1+theta_5(3)*female_data.numberOfAnimals;
-y_hat_6_female = theta_6(1)+theta_6(2)*1+theta_6(3)*dose+(theta_6(4)*female_data.numberOfAnimals)';
-
-y_female=female_data.response;
-
-figure
-plot(dose,y_hat_1_female,"--c")
-hold on
-plot(dose,y_hat_2_female,"--c")
-hold on
-plot(dose,y_hat_3_female,"--c")
-hold on
-plot(dose,y_hat_4_female,"b","linewidth",2)
-hold on
-plot(dose,y_hat_5_female,"--b")
-hold on
-plot(dose,y_hat_6_female,"--y")
-hold on
-plot(dose,y_female,"*k")
-grid on
-title("Female - endpoint 1")
-xlabel("dose")
-ylabel("response")
-legend("1 predictor","","","2 predictors","","3 predictors")
+% female_data=data(data.endpoint==1&data.sex==1,:);
+% y_female=female_data.response;
+% 
+% y_hat_1_male = theta_1(1)+theta_1(2)*1;
+% y_hat_2_male = theta_2(1)+theta_2(2)*x_2;
+% y_hat_3_male = theta_3(1)+theta_3(2)*x_3;
+% y_hat_4_male = theta_4(1)+theta_4(2)*1+theta_4(3)*x_2;
+% y_hat_5_male = theta_5(1)+theta_5(2)*1+theta_5(3)*x_3;
+% y_hat_6_male = theta_6(1)+theta_6(2)*1+theta_6(3)*dose+theta_6(4)*x_3;
+% 
+% figure
+% plot(dose,y_hat_1_female,"--b")
+% hold on
+% plot(dose,y_hat_2_female,"--g")
+% hold on
+% plot(dose,y_hat_3_female,"--r")
+% hold on
+% plot(dose,y_hat_4_female,"c")
+% hold on
+% plot(dose,y_hat_5_female,"--m")
+% hold on
+% plot(dose,y_hat_6_female,"--y")
+% hold on
+% plot(dose,y_female,"*k")
+% grid on
+% title("Female")
+% xlabel("dose")
+% ylabel("response")
+% 
