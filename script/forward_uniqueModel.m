@@ -170,13 +170,18 @@ phi_58=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5 x_2.*
 
 [theta_58,std_theta_58, RSS_58] = identificator(phi_58,y, weights);
 
-% %% BEST MODEL
-% [FPE_4,AIC_4,MDL_4,SQUARED_R_4,Cp_4,BIC_4] = objectiveTest(n, length(theta_4), RSS_4, TSS); %Winner
-% [FPE_8,AIC_8,MDL_8,SQUARED_R_8,Cp_8,BIC_8] = objectiveTest(n, length(theta_8), RSS_8, TSS);
-% [FPE_11,AIC_11,MDL_11,SQUARED_R_11,Cp_11,BIC_11] = objectiveTest(n, length(theta_11), RSS_11, TSS);
-% [FPE_13,AIC_13,MDL_13,SQUARED_R_13,Cp_13,BIC_13] = objectiveTest(n, length(theta_13), RSS_13, TSS);
-% [FPE_15,AIC_15,MDL_15,SQUARED_R_15,Cp_15,BIC_15] = objectiveTest(n, length(theta_15), RSS_15, TSS); 
-% 
+%% BEST MODEL
+[FPE_6,AIC_6,MDL_6,SQUARED_R_6,Cp_6,BIC_6] = objectiveTest(n, length(theta_6), RSS_6, TSS); 
+[FPE_14,AIC_14,MDL_14,SQUARED_R_14,Cp_14,BIC_14] = objectiveTest(n, length(theta_14), RSS_14, TSS);
+[FPE_25,AIC_25,MDL_25,SQUARED_R_25,Cp_25,BIC_25] = objectiveTest(n, length(theta_25), RSS_25, TSS);
+[FPE_35,AIC_35,MDL_35,SQUARED_R_35,Cp_35,BIC_35] = objectiveTest(n, length(theta_35), RSS_35, TSS);
+[FPE_38,AIC_38,MDL_38,SQUARED_R_38,Cp_38,BIC_38] = objectiveTest(n, length(theta_38), RSS_38, TSS);
+[FPE_45,AIC_45,MDL_45,SQUARED_R_45,Cp_45,BIC_45] = objectiveTest(n, length(theta_45), RSS_45, TSS); 
+[FPE_50,AIC_50,MDL_50,SQUARED_R_50,Cp_50,BIC_50] = objectiveTest(n, length(theta_50), RSS_50, TSS);
+[FPE_54,AIC_54,MDL_54,SQUARED_R_54,Cp_54,BIC_54] = objectiveTest(n, length(theta_54), RSS_54, TSS);
+[FPE_56,AIC_56,MDL_56,SQUARED_R_56,Cp_56,BIC_56] = objectiveTest(n, length(theta_56), RSS_56, TSS);
+[FPE_58,AIC_58,MDL_58,SQUARED_R_58,Cp_58,BIC_58] = objectiveTest(n, length(theta_58), RSS_58, TSS); 
+
 % %% Results plot
 % %RSS
 % figure
