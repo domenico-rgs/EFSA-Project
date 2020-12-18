@@ -1,5 +1,4 @@
-%% Subset Selection - endpoint 1
-
+%% Subset Selection - endpoint 1 (forward)
 close all
 clear all
 clc
@@ -13,7 +12,6 @@ data.Properties.VariableNames={'response','numberOfAnimals','SD','dose','sex','e
 data_endpoint_1=data(data.endpoint==1,:);
 x_1 = data_endpoint_1.sex;
 x_2 = data_endpoint_1.dose;
-x_3= data_endpoint_1.numberOfAnimals;
 y=data_endpoint_1.response;
 
 n=length(y);
@@ -24,7 +22,7 @@ weights= 1./((data_endpoint_1.SD./sqrt(data_endpoint_1.numberOfAnimals)).^2);
 %% K=1
 phi_1=[ones(n,1) x_1];
 phi_2=[ones(n,1) x_2];
-phi_3=[ones(n,1) x_3];
+phi_3=[ones(n,1) x_2.*x_1];
 
 [theta_1,std_theta_1, RSS_1] = identificator(phi_1,y, weights); %better
 [theta_2,std_theta_2, RSS_2] = identificator(phi_2,y, weights);
@@ -32,20 +30,20 @@ phi_3=[ones(n,1) x_3];
 
 %% K=2
 phi_4=[ones(n,1) x_1 x_2]; 
-phi_5=[ones(n,1) x_1 x_3];
+phi_5=[ones(n,1) x_1 x_2.*x_1];
 
 [theta_4,std_theta_4, RSS_4] = identificator(phi_4,y, weights); %better
 [theta_5,std_theta_5, RSS_5] = identificator(phi_5,y, weights);
 
 %% K=3
-phi_6=[ones(n,1) x_1 x_2 x_3];
+phi_6=[ones(n,1) x_1 x_2 x_2.*x_1];
 [theta_6,std_theta_6, RSS_6] = identificator(phi_6,y, weights);
 
 
 %% BEST MODEL
 [FPE_1,AIC_1,MDL_1,SQUARED_R_1,Cp_1,BIC_1] = objectiveTest(n, length(theta_1), RSS_1, TSS);
-[FPE_4,AIC_4,MDL_4,SQUARED_R_4,Cp_4,BIC_4] = objectiveTest(n, length(theta_4), RSS_4, TSS); %winner
-[FPE_6,AIC_6,MDL_6,SQUARED_R_6,Cp_6,BIC_6] = objectiveTest(n, length(theta_6), RSS_6, TSS);
+[FPE_4,AIC_4,MDL_4,SQUARED_R_4,Cp_4,BIC_4] = objectiveTest(n, length(theta_4), RSS_4, TSS); 
+[FPE_6,AIC_6,MDL_6,SQUARED_R_6,Cp_6,BIC_6] = objectiveTest(n, length(theta_6), RSS_6, TSS); %winner
 
 %% Results plot
 %RSS
@@ -98,63 +96,42 @@ dose=[0, 30, 100, 150];
 male_data=data(data.endpoint==1&data.sex==0,:);
 
 y_hat_1_male = theta_1(1)+theta_1(2)*0+ones(1,4);
-y_hat_2_male = theta_2(1)+theta_2(2)*dose;
-y_hat_3_male = theta_3(1)+theta_3(2)*male_data.numberOfAnimals;
 y_hat_4_male = theta_4(1)+theta_4(2)*0+theta_4(3)*dose;
-y_hat_5_male = theta_5(1)+theta_5(2)*0+theta_5(3)*male_data.numberOfAnimals;
-y_hat_6_male = theta_6(1)+theta_6(2)*0+theta_6(3)*dose+(theta_6(4)*male_data.numberOfAnimals)';
-
+y_hat_6_male = theta_6(1)+theta_6(2)*0+theta_6(3)*dose+theta_6(4)*0*dose;
 y_male=male_data.response;
 
 figure
 plot(dose,y_hat_1_male,"--c")
 hold on
-plot(dose,y_hat_2_male,"--c")
+plot(dose,y_hat_4_male,"--y")
 hold on
-plot(dose,y_hat_3_male,"--c")
-hold on
-plot(dose,y_hat_4_male,"b","linewidth",2)
-hold on
-plot(dose,y_hat_5_male,"--b")
-hold on
-plot(dose,y_hat_6_male,"--y")
+plot(dose,y_hat_6_male,"b","linewidth",2)
 hold on
 plot(dose,y_male,"*k")
 grid on
 title("Male - endpoint 1")
 xlabel("dose")
 ylabel("response")
-legend("1 predictor","","","2 predictors","","3 predictors")
+legend("1 predictor","2 predictors","3 predictors","data")
 
 %Female Model
-dose=[0, 30, 100, 150];
 female_data=data(data.endpoint==1&data.sex==1,:);
 
 y_hat_1_female = theta_1(1)+theta_1(2)*1+ones(1,4);
-y_hat_2_female = theta_2(1)+theta_2(2)*dose;
-y_hat_3_female = theta_3(1)+theta_3(2)*female_data.numberOfAnimals;
 y_hat_4_female = theta_4(1)+theta_4(2)*1+theta_4(3)*dose;
-y_hat_5_female = theta_5(1)+theta_5(2)*1+theta_5(3)*female_data.numberOfAnimals;
-y_hat_6_female = theta_6(1)+theta_6(2)*1+theta_6(3)*dose+(theta_6(4)*female_data.numberOfAnimals)';
-
+y_hat_6_female = theta_6(1)+theta_6(2)*1+theta_6(3)*dose+theta_6(4)*1*dose;
 y_female=female_data.response;
 
 figure
 plot(dose,y_hat_1_female,"--c")
 hold on
-plot(dose,y_hat_2_female,"--c")
+plot(dose,y_hat_4_female,"--y")
 hold on
-plot(dose,y_hat_3_female,"--c")
-hold on
-plot(dose,y_hat_4_female,"b","linewidth",2)
-hold on
-plot(dose,y_hat_5_female,"--b")
-hold on
-plot(dose,y_hat_6_female,"--y")
+plot(dose,y_hat_6_female,"b","linewidth",2)
 hold on
 plot(dose,y_female,"*k")
 grid on
 title("Female - endpoint 1")
 xlabel("dose")
 ylabel("response")
-legend("1 predictor","","","2 predictors","","3 predictors")
+legend("1 predictor","2 predictors","3 predictors","data")
