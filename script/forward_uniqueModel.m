@@ -182,59 +182,41 @@ phi_58=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5 x_2.*
 [FPE_56,AIC_56,MDL_56,SQUARED_R_56,Cp_56,BIC_56] = objectiveTest(n, length(theta_56), RSS_56, TSS);
 [FPE_58,AIC_58,MDL_58,SQUARED_R_58,Cp_58,BIC_58] = objectiveTest(n, length(theta_58), RSS_58, TSS); 
 
-% %% Results plot
-% %RSS
-% figure
-% sgtitle("RSS at each subset selection iteration")
-% subplot(2,3,1)
-% bar([RSS_1 RSS_2 RSS_3 RSS_4 RSS_5])
-% grid on
-% ylabel("RSS")
-% subplot(2,3,2)
-% bar([RSS_6 RSS_7 RSS_8 RSS_9])
-% grid on
-% set(gca,'XTickLabel',[6 7 8 9]);
-% subplot(2,3,3)
-% bar([RSS_10 RSS_11 RSS_12])
-% grid on
-% set(gca,'XTickLabel',[10 11 12]);
-% subplot(2,3,4)
-% bar([RSS_13 RSS_14])
-% grid on
-% set(gca,'XTickLabel',[13 14]);
-% subplot(2,3,5)
-% bar(RSS_15)
-% grid on
-% set(gca,'XTickLabel',15);
-% 
-% %Objective test
-% x=[4 8 11 13 15];
-% figure
-% sgtitle("Objective tests evolution")
-% subplot(2,3,1)
-% plot(x,[FPE_4 FPE_8 FPE_11 FPE_13 FPE_15],'-o')
-% grid on
-% title("FPE")
-% subplot(2,3,2)
-% plot(x,[AIC_4 AIC_8 AIC_11 AIC_13 AIC_15],'-o')
-% grid on
-% title("AIC")
-% subplot(2,3,3)
-% plot(x,[MDL_4 MDL_8 MDL_11 MDL_13 MDL_15],'-o')
-% grid on
-% title("MDL")
-% subplot(2,3,4)
-% plot(x,[SQUARED_R_4 SQUARED_R_8 SQUARED_R_11 SQUARED_R_13 SQUARED_R_15],'-o')
-% grid on
-% title("R^2")
-% subplot(2,3,5)
-% plot(x,[Cp_4 Cp_8 Cp_11 Cp_13 Cp_15],'-o')
-% grid on
-% title("C_p")
-% subplot(2,3,6)
-% plot(x,[BIC_4 BIC_8 BIC_11 BIC_13 BIC_15],'-o')
-% grid on
-% title("BIC")
+%% Results plot
+%RSS
+figure
+plot([RSS_6 RSS_14 RSS_25 RSS_35 RSS_38 RSS_45 RSS_50 RSS_54 RSS_56 RSS_58])
+
+
+
+%Objective test
+x=[6 14 25 35 38 45 50 54 56 58];
+figure
+sgtitle("Objective tests evolution")
+subplot(2,3,1)
+plot(x,[FPE_6 FPE_14 FPE_25 FPE_35 FPE_38 FPE_45 FPE_50 FPE_54 FPE_56 FPE_58],'-o')
+grid on
+title("FPE")
+subplot(2,3,2)
+plot(x,[AIC_6 AIC_14 AIC_25 AIC_35 AIC_38 AIC_45 AIC_50 AIC_54 AIC_56 AIC_58],'-o')
+grid on
+title("AIC")
+subplot(2,3,3)
+plot(x,[MDL_6 MDL_14 MDL_25 MDL_35 MDL_38 MDL_45 MDL_50 MDL_54 MDL_56 MDL_58],'-o')
+grid on
+title("MDL")
+subplot(2,3,4)
+plot(x,[SQUARED_R_6 SQUARED_R_14 SQUARED_R_25 SQUARED_R_35 SQUARED_R_38 SQUARED_R_45 SQUARED_R_50 SQUARED_R_54 SQUARED_R_56 SQUARED_R_58],'-o')
+grid on
+title("R^2")
+subplot(2,3,5)
+plot(x,[Cp_6 Cp_14 Cp_25 Cp_35 Cp_38 Cp_45 Cp_50 Cp_54 Cp_56 Cp_58],'-o')
+grid on
+title("C_p")
+subplot(2,3,6)
+plot(x,[BIC_6 BIC_14 BIC_25 BIC_35 BIC_38 BIC_45 BIC_50 BIC_54 BIC_56 BIC_58],'-o')
+grid on
+title("BIC")
 
 % %Male Model - endpoint1
 % dose=[0, 30, 100, 150];

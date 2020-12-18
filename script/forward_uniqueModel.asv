@@ -182,37 +182,19 @@ phi_58=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5 x_2.*
 [FPE_56,AIC_56,MDL_56,SQUARED_R_56,Cp_56,BIC_56] = objectiveTest(n, length(theta_56), RSS_56, TSS);
 [FPE_58,AIC_58,MDL_58,SQUARED_R_58,Cp_58,BIC_58] = objectiveTest(n, length(theta_58), RSS_58, TSS); 
 
-% %% Results plot
-% %RSS
-% figure
-% sgtitle("RSS at each subset selection iteration")
-% subplot(2,3,1)
-% bar([RSS_1 RSS_2 RSS_3 RSS_4 RSS_5])
-% grid on
-% ylabel("RSS")
-% subplot(2,3,2)
-% bar([RSS_6 RSS_7 RSS_8 RSS_9])
-% grid on
-% set(gca,'XTickLabel',[6 7 8 9]);
-% subplot(2,3,3)
-% bar([RSS_10 RSS_11 RSS_12])
-% grid on
-% set(gca,'XTickLabel',[10 11 12]);
-% subplot(2,3,4)
-% bar([RSS_13 RSS_14])
-% grid on
-% set(gca,'XTickLabel',[13 14]);
-% subplot(2,3,5)
-% bar(RSS_15)
-% grid on
-% set(gca,'XTickLabel',15);
+%% Results plot
+%RSS
+figure
+plot([RSS_6 RSS_14 RSS_25 RSS_35 RSS_38 RSS_45 RSS_50 RSS_54 RSS_56 RSS_58])
+
+
 % 
 % %Objective test
-% x=[4 8 11 13 15];
+% x=[6 14 25 35 38 45 50 54 56 58];
 % figure
 % sgtitle("Objective tests evolution")
 % subplot(2,3,1)
-% plot(x,[FPE_4 FPE_8 FPE_11 FPE_13 FPE_15],'-o')
+% plot(x,[FPE_6 FPE_8 FPE_11 FPE_13 FPE_15],'-o')
 % grid on
 % title("FPE")
 % subplot(2,3,2)
