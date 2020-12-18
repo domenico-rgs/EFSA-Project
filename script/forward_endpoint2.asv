@@ -13,6 +13,7 @@ data.Properties.VariableNames={'response','numberOfAnimals','SD','dose','sex','e
 data_endpoint_2=data(data.endpoint==2,:);
 x_1 = data_endpoint_2.sex;
 x_2 = data_endpoint_2.dose;
+x_1.*x_2= x_1.*x_2;
 y=data_endpoint_2.response;
 
 n=length(y);

@@ -30,7 +30,7 @@ phi_2=[ones(n,1) x_2];
 phi_3=[ones(n,1) x_1.*x_2];
 phi_4=[ones(n,1) x_4];
 phi_5=[ones(n,1) x_5];
-phi_6=[ones(n,1) x_1.*x_4]; %best
+phi_6=[ones(n,1) x_1.*x_4];
 phi_7=[ones(n,1) x_1.*x_5];
 phi_8=[ones(n,1) x_2.*x_4];
 phi_9=[ones(n,1) x_2.*x_5];
@@ -53,7 +53,7 @@ phi_12=[ones(n,1) x_1.*x_2.*x_4.*x_5];
 
 %% K=4
 phi_13=[ones(n,1) x_1 x_4 x_1.*x_4 x_2];
-phi_14=[ones(n,1) x_1 x_4 x_1.*x_4 x_5]; %best
+phi_14=[ones(n,1) x_1 x_4 x_1.*x_4 x_5];
 phi_15=[ones(n,1) x_1 x_4 x_1.*x_4 x_1.*x_2];
 phi_16=[ones(n,1) x_1 x_4 x_1.*x_4 x_1.*x_5];
 phi_17=[ones(n,1) x_1 x_4 x_1.*x_4 x_2.*x_4];
@@ -76,7 +76,7 @@ phi_21=[ones(n,1) x_1 x_4 x_1.*x_4 x_1.*x_2.*x_4.*x_5];
 phi_22=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2];
 phi_23=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_1.*x_2];
 phi_24=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_1.*x_5];
-phi_25=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4]; %best
+phi_25=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4];
 phi_26=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_5];
 phi_27=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_1.*x_2.*x_4];
 phi_28=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_1.*x_2.*x_5];
@@ -97,7 +97,7 @@ phi_31=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2];
 phi_32=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_5];
 phi_33=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_2.*x_4];
 phi_34=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_2.*x_5];
-phi_35=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4]; %best
+phi_35=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4];
 phi_36=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_5];
 phi_37=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4.*x_5];
 
@@ -111,7 +111,7 @@ phi_37=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4.*x_5];
 [theta_37,std_theta_37, RSS_37] = identificator(phi_37,y, weights);
 
 %% K=7
-phi_38=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2]; %best
+phi_38=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2];
 phi_39=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_1.*x_2];
 phi_40=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_1.*x_5];
 phi_41=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2.*x_5];
@@ -127,7 +127,7 @@ phi_43=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_1.*x_2.*x_4.*x_5
 
 %% K=8
 phi_44=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_2];
-phi_45=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5]; %best
+phi_45=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5];
 phi_46=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_2.*x_5];
 phi_47=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_2.*x_5];
 phi_48=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_2.*x_4.*x_5];
@@ -139,36 +139,10 @@ phi_48=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_2.*x_4.
 [theta_48,std_theta_48, RSS_48] = identificator(phi_48,y, weights);
 
 %% K=9
-phi_49=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5 x_1.*x_2];
-phi_50=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5 x_2.*x_5]; %best
-phi_51=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5 x_1.*x_2.*x_5];
-phi_52=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5 x_1.*x_2.*x_4.*x_5];
-
-[theta_49,std_theta_49, RSS_49] = identificator(phi_49,y, weights);
-[theta_50,std_theta_50, RSS_50] = identificator(phi_50,y, weights);
-[theta_51,std_theta_51, RSS_51] = identificator(phi_51,y, weights);
-[theta_52,std_theta_52, RSS_52] = identificator(phi_52,y, weights);
-
-%% K=10
-phi_53=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5 x_2.*x_5 x_1.*x_2];
-phi_54=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5 x_2.*x_5 x_1.*x_2.*x_5]; %best
-phi_55=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5 x_2.*x_5 x_1.*x_2.*x_4.*x_5];
-
-[theta_53,std_theta_53, RSS_53] = identificator(phi_53,y, weights);
-[theta_54,std_theta_54, RSS_54] = identificator(phi_54,y, weights);
-[theta_55,std_theta_55, RSS_55] = identificator(phi_55,y, weights);
-
-%% K=11
-phi_56=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5 x_2.*x_5 x_1.*x_2.*x_5 x_1.*x_2]; %best
-phi_57=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5 x_2.*x_5 x_1.*x_2.*x_5 x_1.*x_2.*x_4.*x_5];
-
-[theta_56,std_theta_56, RSS_56] = identificator(phi_56,y, weights);
-[theta_57,std_theta_57, RSS_57] = identificator(phi_57,y, weights);
-
-%% K=12
-phi_58=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5 x_2.*x_5 x_1.*x_2.*x_5 x_1.*x_2 x_1.*x_2.*x_4.*x_5]; %best
-
-[theta_58,std_theta_58, RSS_58] = identificator(phi_58,y, weights);
+phi_45=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5];
+phi_45=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5];
+phi_45=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5];
+phi_45=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5];
 
 % %% BEST MODEL
 % [FPE_4,AIC_4,MDL_4,SQUARED_R_4,Cp_4,BIC_4] = objectiveTest(n, length(theta_4), RSS_4, TSS); %Winner
