@@ -30,7 +30,7 @@ phi_3=[ones(n,1) x_1 x_2.*x_1];
 phi_4=[ones(n,1) x_2 x_2.*x_1];
 
 [theta_2,std_theta_2, RSS_2] = identificator(phi_2,y, weights); %best
-[theta_3,std_theta_3, RSS_3] = identificator(phi_3,y, weights);
+[theta_3,std_theta_3, RSS_3] = identificator(phi_3,y, weights); %but this is better because theta3>2*std.error(theta3)
 [theta_4,std_theta_4, RSS_4] = identificator(phi_4,y, weights);  
 %% K=1
 phi_5=[ones(n,1) x_1];

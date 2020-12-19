@@ -42,7 +42,7 @@ phi_6=[ones(n,1) x_1 x_2 x_2.*x_1];
 
 %% BEST MODEL
 [FPE_1,AIC_1,MDL_1,SQUARED_R_1,Cp_1,BIC_1] = objectiveTest(n, length(theta_1), RSS_1, TSS);
-[FPE_4,AIC_4,MDL_4,SQUARED_R_4,Cp_4,BIC_4] = objectiveTest(n, length(theta_4), RSS_4, TSS); 
+[FPE_4,AIC_4,MDL_4,SQUARED_R_4,Cp_4,BIC_4] = objectiveTest(n, length(theta_4), RSS_4, TSS); %but this is better because theta3>2*std.error(theta3)
 [FPE_6,AIC_6,MDL_6,SQUARED_R_6,Cp_6,BIC_6] = objectiveTest(n, length(theta_6), RSS_6, TSS); %winner
 
 %% Results plot
@@ -103,7 +103,7 @@ y_male=male_data.response;
 figure
 plot(dose,y_hat_1_male,"--c")
 hold on
-plot(dose,y_hat_4_male,"--y")
+plot(dose,y_hat_4_male,"g","linewidth",1)
 hold on
 plot(dose,y_hat_6_male,"b","linewidth",2)
 hold on
@@ -125,7 +125,7 @@ y_female=female_data.response;
 figure
 plot(dose,y_hat_1_female,"--c")
 hold on
-plot(dose,y_hat_4_female,"--y")
+plot(dose,y_hat_4_female,"g","linewidth",1)
 hold on
 plot(dose,y_hat_6_female,"b","linewidth",2)
 hold on

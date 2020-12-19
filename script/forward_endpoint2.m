@@ -1,5 +1,4 @@
-%% Subset Selection - endpoint 2
-
+%% Subset Selection - endpoint 2 (forward)
 close all
 clear all
 clc
@@ -105,9 +104,9 @@ y_male=male_data.response;
 figure
 plot(dose,y_hat_2_male,"--c")
 hold on
-plot(dose,y_hat_4_male,"b","linewidth",2)
+plot(dose,y_hat_4_male,"g","linewidth",2)
 hold on
-plot(dose,y_hat_6_male,"--y")
+plot(dose,y_hat_6_male,"--b")
 hold on
 plot(dose,y_male,"*k")
 grid on
@@ -129,9 +128,9 @@ y_female=female_data.response;
 figure
 plot(dose,y_hat_2_female,"--c")
 hold on
-plot(dose,y_hat_4_female,"b","linewidth",2)
+plot(dose,y_hat_4_female,"g","linewidth",2)
 hold on
-plot(dose,y_hat_6_female,"--y")
+plot(dose,y_hat_6_female,"--b")
 hold on
 plot(dose,y_female,"*k")
 grid on

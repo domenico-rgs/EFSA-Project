@@ -1,4 +1,4 @@
-%% Subset Selection - endpoint 3
+%% Subset Selection - endpoint 3 (forward)
 close all
 clear all
 clc

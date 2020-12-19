@@ -9,15 +9,15 @@ warning('OFF', 'MATLAB:table:ModifiedAndSavedVarnames')
 data=readtable('../data/MiniProjectEFSA.xlsx', opts);
 data.Properties.VariableNames={'response','numberOfAnimals','SD','dose','sex','endpoint'};
 
-data_endpoint_1=data(data.endpoint==1,:);
-x_1 = data_endpoint_1.sex;
-x_2 = data_endpoint_1.dose;
-y=data_endpoint_1.response;
+data_endpoint_3=data(data.endpoint==3,:);
+x_1 = data_endpoint_3.sex;
+x_2 = data_endpoint_3.dose;
+y=data_endpoint_3.response;
 
 n=length(y);
 
 TSS=sum(((y-mean(y))'*((y-mean(y)))));
-weights= 1./((data_endpoint_1.SD./sqrt(data_endpoint_1.numberOfAnimals)).^2);
+weights= 1./((data_endpoint_3.SD./sqrt(data_endpoint_3.numberOfAnimals)).^2);
 
 
 %% K=1
@@ -41,8 +41,8 @@ phi_6=[ones(n,1) x_2];
 
 %% BEST MODEL
 [FPE_1,AIC_1,MDL_1,SQUARED_R_1,Cp_1,BIC_1] = objectiveTest(n, length(theta_1), RSS_1, TSS);
-[FPE_2,AIC_2,MDL_2,SQUARED_R_2,Cp_2,BIC_2] = objectiveTest(n, length(theta_2), RSS_2, TSS); 
-[FPE_5,AIC_5,MDL_5,SQUARED_R_5,Cp_5,BIC_5] = objectiveTest(n, length(theta_5), RSS_5, TSS);
+[FPE_2,AIC_2,MDL_2,SQUARED_R_2,Cp_2,BIC_2] = objectiveTest(n, length(theta_2), RSS_2, TSS); %winner
+[FPE_6,AIC_6,MDL_6,SQUARED_R_6,Cp_6,BIC_6] = objectiveTest(n, length(theta_6), RSS_6, TSS);
 
 %% Results plot
 %RSS
@@ -66,26 +66,26 @@ x=[1 4 6];
 figure
 sgtitle("Objective tests evolution")
 subplot(2,3,1)
-plot(x,[FPE_1 FPE_2 FPE_5],'-o')
+plot(x,[FPE_1 FPE_2 FPE_6],'-o')
 grid on
 title("FPE")
 subplot(2,3,2)
-plot(x,[AIC_1 AIC_2 AIC_5],'-o')
+plot(x,[AIC_1 AIC_2 AIC_6],'-o')
 grid on
 title("AIC")
 subplot(2,3,3)
-plot(x,[MDL_1 MDL_2 MDL_5],'-o')
+plot(x,[MDL_1 MDL_2 MDL_6],'-o')
 grid on
 title("MDL")
 subplot(2,3,4)
-plot(x,[SQUARED_R_1 SQUARED_R_2 SQUARED_R_5],'-o')
+plot(x,[SQUARED_R_1 SQUARED_R_2 SQUARED_R_6],'-o')
 grid on
 title("R^2")
 subplot(2,3,5)
-plot(x,[Cp_1 Cp_2 Cp_5],'-o')
+plot(x,[Cp_1 Cp_2 Cp_6],'-o')
 grid on
 title("C_p")
 subplot(2,3,6)
-plot(x,[BIC_1 BIC_2 BIC_5],'-o')
+plot(x,[BIC_1 BIC_2 BIC_6],'-o')
 grid on
 title("BIC")
