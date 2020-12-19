@@ -1,4 +1,4 @@
-%% Unique model
+%% Unique model (forward)
 close all
 clear all
 clc
@@ -173,7 +173,7 @@ phi_58=[ones(n,1) x_1 x_4 x_1.*x_4 x_5 x_2.*x_4 x_1.*x_2.*x_4 x_2 x_1.*x_5 x_2.*
 [FPE_6,AIC_6,MDL_6,SQUARED_R_6,Cp_6,BIC_6] = objectiveTest(n, length(theta_6), RSS_6, TSS); 
 [FPE_14,AIC_14,MDL_14,SQUARED_R_14,Cp_14,BIC_14] = objectiveTest(n, length(theta_14), RSS_14, TSS);
 [FPE_25,AIC_25,MDL_25,SQUARED_R_25,Cp_25,BIC_25] = objectiveTest(n, length(theta_25), RSS_25, TSS);
-[FPE_35,AIC_35,MDL_35,SQUARED_R_35,Cp_35,BIC_35] = objectiveTest(n, length(theta_35), RSS_35, TSS);
+[FPE_35,AIC_35,MDL_35,SQUARED_R_35,Cp_35,BIC_35] = objectiveTest(n, length(theta_35), RSS_35, TSS); %winner
 [FPE_38,AIC_38,MDL_38,SQUARED_R_38,Cp_38,BIC_38] = objectiveTest(n, length(theta_38), RSS_38, TSS);
 [FPE_45,AIC_45,MDL_45,SQUARED_R_45,Cp_45,BIC_45] = objectiveTest(n, length(theta_45), RSS_45, TSS); 
 [FPE_50,AIC_50,MDL_50,SQUARED_R_50,Cp_50,BIC_50] = objectiveTest(n, length(theta_50), RSS_50, TSS);
