@@ -222,11 +222,11 @@ ylabel("response")
 %Female Model - endpoint2
 female_data_end2=data(data.sex==1&data.endpoint==2,:);
 
-y_hat_29_female_end2 = theta_29(1)+theta_29(2)*1+theta_29(3)*dose+theta_29(4)*0+theta_29(5)*1+theta_29(6)*dose*0+theta_29(7)*1*0+theta_29(8)*dose*1*0;
+y_hat_29_female_end2 = theta_29(1)+theta_29(2)*0+theta_29(3)*dose+theta_29(4)*0+theta_29(5)*1+theta_29(6)*dose*0+theta_29(7)*0*0+theta_29(8)*dose*0*0;
 y_female_end2=female_data_end2.response;
 
 figure
-plot(dose,y_hat_29_female_end2,"b","linewidth",2)
+plot(dose,y_hat_38_female_end2,"b","linewidth",2)
 hold on
 plot(dose,y_female_end2,"*k")
 grid on
@@ -234,32 +234,32 @@ title("Female - endpoint 2 - uniquemodel")
 xlabel("dose")
 ylabel("response")
 
-%Male Model - endpoint3
-male_data_end3=data(data.sex==0&data.endpoint==3,:);
-
-y_hat_29_male_end3 = theta_29(1)+theta_29(2)*0+theta_29(3)*dose+theta_29(4)*0+theta_29(5)*0+theta_29(6)*dose*0+theta_29(7)*0*0+theta_29(8)*dose*0*0;
-y_male_end3=male_data_end3.response;
-
-figure
-plot(dose,y_hat_29_male_end3,"b","linewidth",2)
-hold on
-plot(dose,y_male_end3,"*k")
-grid on
-title("Male - endpoint 3 - uniquemodel")
-xlabel("dose")
-ylabel("response")
-
-%Female Model - endpoint3
-female_data_end3=data(data.sex==1&data.endpoint==3,:);
-
-y_hat_29_female_end3 = theta_29(1)+theta_29(2)*1+theta_29(3)*dose+theta_29(4)*0+theta_29(5)*0+theta_29(6)*dose*0+theta_29(7)*1*0+theta_29(8)*dose*1*0;
-y_female_end3=female_data_end3.response;
-
-figure
-plot(dose,y_hat_29_female_end3,"b","linewidth",2)
-hold on
-plot(dose,y_female_end3,"*k")
-grid on
-title("Female - endpoint 3 - uniquemodel")
-xlabel("dose")
-ylabel("response")
+% %Male Model - endpoint3
+% male_data_end3=data(data.sex==0&data.endpoint==3,:);
+% 
+% y_hat_38_male_end3 = theta_38(1)+theta_38(2)*0+theta_38(3)*0+theta_38(4)*0*0+theta_38(5)*0+theta_38(6)*dose*0+theta_38(7)*0*dose*0+theta_38(8)*dose;
+% y_male_end3=male_data_end3.response;
+% 
+% figure
+% plot(dose,y_hat_38_male_end3,"b","linewidth",2)
+% hold on
+% plot(dose,y_male_end3,"*k")
+% grid on
+% title("Male - endpoint 3 - uniquemodel")
+% xlabel("dose")
+% ylabel("response")
+% 
+% %Female Model - endpoint3
+% female_data_end3=data(data.sex==1&data.endpoint==3,:);
+% 
+% y_hat_38_female_end3 = theta_38(1)+theta_38(2)*1+theta_38(3)*0+theta_38(4)*1*0+theta_38(5)*0+theta_38(6)*dose*0+theta_38(7)*1*dose*0+theta_38(8)*dose;
+% y_female_end3=female_data_end3.response;
+% 
+% figure
+% plot(dose,y_hat_38_female_end3,"b","linewidth",2)
+% hold on
+% plot(dose,y_female_end3,"*k")
+% grid on
+% title("Female - endpoint 3 - uniquemodel")
+% xlabel("dose")
+% ylabel("response")
