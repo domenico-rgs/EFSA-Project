@@ -1,0 +1,87 @@
+close all
+clear all
+clc
+
+% Data Import
+opts=detectImportOptions('../data/MiniProjectEFSA.xlsx');
+warning('OFF', 'MATLAB:table:ModifiedAndSavedVarnames')
+data=readtable('../data/MiniProjectEFSA.xlsx', opts);
+data.Properties.VariableNames={'response','numberOfAnimals','SD','dose','sex','endpoint'};
+
+dose=[0, 30, 100, 150];
+
+data_male_1 = data(data.endpoint==1&data.sex==0,:);
+data_female_1 = data(data.endpoint==1&data.sex==1,:);
+data_male_2 = data(data.endpoint==2&data.sex==0,:);
+data_female_2 = data(data.endpoint==2&data.sex==1,:);
+data_male_3 = data(data.endpoint==3&data.sex==0,:);
+data_female_3 = data(data.endpoint==3&data.sex==1,:);
+
+y=data.response;
+n=length(y);
+weights= 1./((data.SD./sqrt(data.numberOfAnimals)).^2);
+x_1 = data.sex;
+x_2 = data.dose;
+
+DUMMY = dummyvar(data.endpoint);
+x_4 = DUMMY(:,1); %dummy variable for endpoint 1
+x_5 = DUMMY(:,2); %dummy variable for endpoint 2
+
+phi_29=[ones(n,1) x_1 x_2 x_4 x_5 x_2.*x_4 x_1.*x_4 x_1.*x_2.*x_4];
+[theta_29,~,~] = identificator(phi_29,y, weights);
+
+%Endpoint1
+male_data_end1=data(data.sex==0&data.endpoint==1,:);
+y_hat_29_male_end1 = theta_29(1)+theta_29(2)*0+theta_29(3)*dose+theta_29(4)*1+theta_29(5)*0+theta_29(6)*dose*1+theta_29(7)*0*1+theta_29(8)*dose*0*1;
+
+female_data_end1=data(data.sex==1&data.endpoint==1,:);
+y_hat_29_female_end1 = theta_29(1)+theta_29(2)*1+theta_29(3)*dose+theta_29(4)*1+theta_29(5)*0+theta_29(6)*dose*1+theta_29(7)*1*1+theta_29(8)*dose*1*1;
+
+
+%Endpoint2
+male_data_end2=data(data.sex==0&data.endpoint==2,:);
+y_hat_29_male_end2 = theta_29(1)+theta_29(2)*0+theta_29(3)*dose+theta_29(4)*0+theta_29(5)*1+theta_29(6)*dose*0+theta_29(7)*0*0+theta_29(8)*dose*0*0;
+
+female_data_end2=data(data.sex==1&data.endpoint==2,:);
+y_hat_29_female_end2 = theta_29(1)+theta_29(2)*1+theta_29(3)*dose+theta_29(4)*0+theta_29(5)*1+theta_29(6)*dose*0+theta_29(7)*1*0+theta_29(8)*dose*1*0;
+
+
+%Endpoint3
+male_data_end3=data(data.sex==0&data.endpoint==3,:);
+y_hat_29_male_end3 = theta_29(1)+theta_29(2)*0+theta_29(3)*dose+theta_29(4)*0+theta_29(5)*0+theta_29(6)*dose*0+theta_29(7)*0*0+theta_29(8)*dose*0*0;
+
+female_data_end3=data(data.sex==1&data.endpoint==3,:);
+y_hat_29_female_end3 = theta_29(1)+theta_29(2)*1+theta_29(3)*dose+theta_29(4)*0+theta_29(5)*0+theta_29(6)*dose*0+theta_29(7)*1*0+theta_29(8)*dose*1*0;
+
+figure
+errorbar(dose,data_male_1.response,2*(data_male_1.SD./sqrt(data_male_1.numberOfAnimals)),"-*g")
+hold on
+plot(dose,y_hat_29_male_end1,"b")
+hold on
+errorbar(dose,data_female_1.response,2*(data_female_1.SD./sqrt(data_female_1.numberOfAnimals)),"-*b")
+hold on
+plot(dose,y_hat_29_female_end1,"m")
+hold on
+errorbar(dose,data_male_2.response,2*(data_male_2.SD./sqrt(data_male_2.numberOfAnimals)),"-*y")
+hold on
+plot(dose,y_hat_29_male_end2,"b")
+hold on
+errorbar(dose,data_female_2.response,2*(data_female_2.SD./sqrt(data_female_2.numberOfAnimals)),"-*c")
+hold on
+plot(dose,y_hat_29_female_end2,"m")
+hold on
+errorbar(dose,data_male_3.response,2*(data_male_3.SD./sqrt(data_male_3.numberOfAnimals)),"-*r")
+hold on
+plot(dose,y_hat_29_male_end3,"b")
+hold on
+errorbar(dose,data_female_3.response,2*(data_male_3.SD./sqrt(data_female_3.numberOfAnimals)),"-*m")
+hold on
+plot(dose,y_hat_29_female_end3,"m")
+xlim([-10 160])
+grid on
+xlabel("dose")
+ylabel("response")
+title("Results")
+legend("Response endpoint 1 - male","Predicted response endpoint 1 - male","Response endpoint 1 - female","Predicted response endpoint 1 - female",...
+    "Response endpoint 2 - male","Predicted response endpoint 2 - male","Response endpoint 2 - female","Predicted response endpoint 2 - female",...
+    "Response endpoint 3 - male","Predicted response endpoint 3 - male","Response endpoint 3 - female","Predicted response endpoint 3 - female");

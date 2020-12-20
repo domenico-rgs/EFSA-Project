@@ -173,93 +173,78 @@ plot(x,[BIC_8 BIC_15 BIC_21 BIC_29 BIC_33 BIC_36 BIC_39 BIC_40],'-o')
 grid on
 title("BIC")
 
-%Male Model - endpoint1
+%Endpoint1
 dose=[0, 30, 100, 150];
 male_data_end1=data(data.sex==0&data.endpoint==1,:);
 
 y_hat_29_male_end1 = theta_29(1)+theta_29(2)*0+theta_29(3)*dose+theta_29(4)*1+theta_29(5)*0+theta_29(6)*dose*1+theta_29(7)*0*1+theta_29(8)*dose*0*1;
 y_male_end1=male_data_end1.response;
 
-figure
-plot(dose,y_hat_29_male_end1,"b","linewidth",2)
-hold on
-plot(dose,y_male_end1,"*k")
-grid on
-title("Male - endpoint 1 - uniquemodel")
-xlabel("dose")
-ylabel("response")
-
-%Female Model - endpoint1
 female_data_end1=data(data.sex==1&data.endpoint==1,:);
 
 y_hat_29_female_end1 = theta_29(1)+theta_29(2)*1+theta_29(3)*dose+theta_29(4)*1+theta_29(5)*0+theta_29(6)*dose*1+theta_29(7)*1*1+theta_29(8)*dose*1*1;
 y_female_end1=female_data_end1.response;
 
 figure
-plot(dose,y_hat_29_female_end1,"b","linewidth",2)
+plot(dose,y_hat_29_male_end1,"b","linewidth",2)
+hold on
+plot(dose,y_male_end1,"*r")
+hold on
+plot(dose,y_hat_29_female_end1,"m","linewidth",2)
 hold on
 plot(dose,y_female_end1,"*k")
 grid on
-title("Female - endpoint 1 - uniquemodel")
+title("Endpoint 1 - uniquemodel")
 xlabel("dose")
 ylabel("response")
+legend("male","data male","female","data female")
 
-%Male Model - endpoint2
+%Endpoint2
 male_data_end2=data(data.sex==0&data.endpoint==2,:);
 
 y_hat_29_male_end2 = theta_29(1)+theta_29(2)*0+theta_29(3)*dose+theta_29(4)*0+theta_29(5)*1+theta_29(6)*dose*0+theta_29(7)*0*0+theta_29(8)*dose*0*0;
 y_male_end2=male_data_end2.response;
 
-figure
-plot(dose,y_hat_29_male_end2,"b","linewidth",2)
-hold on
-plot(dose,y_male_end2,"*k")
-grid on
-title("Male - endpoint 2 - uniquemodel")
-xlabel("dose")
-ylabel("response")
-
-%Female Model - endpoint2
 female_data_end2=data(data.sex==1&data.endpoint==2,:);
 
 y_hat_29_female_end2 = theta_29(1)+theta_29(2)*1+theta_29(3)*dose+theta_29(4)*0+theta_29(5)*1+theta_29(6)*dose*0+theta_29(7)*1*0+theta_29(8)*dose*1*0;
 y_female_end2=female_data_end2.response;
 
 figure
-plot(dose,y_hat_29_female_end2,"b","linewidth",2)
+plot(dose,y_hat_29_male_end2,"b","linewidth",2)
+hold on
+plot(dose,y_male_end2,"*r")
+hold on
+plot(dose,y_hat_29_female_end2,"m","linewidth",2)
 hold on
 plot(dose,y_female_end2,"*k")
 grid on
-title("Female - endpoint 2 - uniquemodel")
+title("Endpoint 2 - uniquemodel")
 xlabel("dose")
 ylabel("response")
+legend("male","data male","female","data female")
 
-%Male Model - endpoint3
+%Endpoint3
 male_data_end3=data(data.sex==0&data.endpoint==3,:);
 
 y_hat_29_male_end3 = theta_29(1)+theta_29(2)*0+theta_29(3)*dose+theta_29(4)*0+theta_29(5)*0+theta_29(6)*dose*0+theta_29(7)*0*0+theta_29(8)*dose*0*0;
 y_male_end3=male_data_end3.response;
 
-figure
-plot(dose,y_hat_29_male_end3,"b","linewidth",2)
-hold on
-plot(dose,y_male_end3,"*k")
-grid on
-title("Male - endpoint 3 - uniquemodel")
-xlabel("dose")
-ylabel("response")
-
-%Female Model - endpoint3
 female_data_end3=data(data.sex==1&data.endpoint==3,:);
 
 y_hat_29_female_end3 = theta_29(1)+theta_29(2)*1+theta_29(3)*dose+theta_29(4)*0+theta_29(5)*0+theta_29(6)*dose*0+theta_29(7)*1*0+theta_29(8)*dose*1*0;
 y_female_end3=female_data_end3.response;
 
 figure
-plot(dose,y_hat_29_female_end3,"b","linewidth",2)
+plot(dose,y_hat_29_male_end3,"b","linewidth",2)
+hold on
+plot(dose,y_male_end3,"*r")
+hold on
+plot(dose,y_hat_29_female_end3,"m","linewidth",2)
 hold on
 plot(dose,y_female_end3,"*k")
 grid on
-title("Female - endpoint 3 - uniquemodel")
+title("Endpoint 3 - uniquemodel")
 xlabel("dose")
 ylabel("response")
+legend("male","data male","female","data female")
