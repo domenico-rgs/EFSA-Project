@@ -137,4 +137,4 @@ grid on
 title("Female - endpoint 1")
 xlabel("dose")
 ylabel("response")
-legend("1 predictor","2 predictors","3 predictors")
+legend("1 predictor","2 predictors","3 predictors","data")
