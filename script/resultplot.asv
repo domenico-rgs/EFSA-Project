@@ -83,9 +83,9 @@ grid on
 xlabel("dose")
 ylabel("response")
 title("Forward model")
-legend("Response endpoint 1 - male","Predicted response endpoint 1 - male","Response endpoint 1 - female","Predicted response endpoint 1 - female",...
-    "Response endpoint 2 - male","Predicted response endpoint 2 - male","Response endpoint 2 - female","Predicted response endpoint 2 - female",...
-    "Response endpoint 3 - male","Predicted response endpoint 3 - male","Response endpoint 3 - female","Predicted response endpoint 3 - female");
+%legend("Response endpoint 1 - male","Predicted response endpoint 1 - male","Response endpoint 1 - female","Predicted response endpoint 1 - female",...
+%    "Response endpoint 2 - male","Predicted response endpoint 2 - male","Response endpoint 2 - female","Predicted response endpoint 2 - female",...
+%    "Response endpoint 3 - male","Predicted response endpoint 3 - male","Response endpoint 3 - female","Predicted response endpoint 3 - female");
 
 %% StepwiseLM model
 coeff=[18.247; -0.014438; 1.0922; 533.6; 26.79; -0.29841; -222.79; -1.9389];
@@ -100,15 +100,15 @@ y_hat_female_end1 = coeff(1)+coeff(2)*dose+coeff(3)*1+coeff(4)*1+coeff(5)*0+coef
 
 %Endpoint2
 male_data_end2=data(data.sex==0&data.endpoint==2,:);
-y_hat_male_end2 = coeff(1)+coeff(2)*dose+coeff(3)*0+coeff(4)*0+coeff(5)*1+coeff(6)*dose*0+coeff(7)*0*0+coeff(8)*0*1;
+y_hat_male_end2 = coeff(1)+coeff(2)*dose+coeff(3)*0+coeff(4)*0+coeff(5)*1+coeff(6)*dose*1+coeff(7)*0*0+coeff(8)*0*1;
 
 female_data_end2=data(data.sex==1&data.endpoint==2,:);
-y_hat_female_end2 = coeff(1)+coeff(2)*dose+coeff(3)*1+coeff(4)*0+coeff(5)*1+coeff(6)*dose*0+coeff(7)*1*0+coeff(8)*1*1;
+y_hat_female_end2 = coeff(1)+coeff(2)*dose+coeff(3)*1+coeff(4)*0+coeff(5)*1+coeff(6)*dose*1+coeff(7)*1*0+coeff(8)*1*1;
 
 
 %Endpoint3
 male_data_end3=data(data.sex==0&data.endpoint==3,:);
-y_hat_male_end3 = coeff(1)+coeff(2)*dose+coeff(3)*0+coeff(4)*0+coeff(5)*0+coeff(6)*dose*0+coeff(7)*0*0+coeff(8)*0*0;
+y_hat_male_end3 = coeff(1)+coeff(2)*dose+coeff(3)*0+coeff(4)*0+coeff(5)*0+coeff(6)*dose*1+coeff(7)*0*0+coeff(8)*0*0;
 
 female_data_end3=data(data.sex==1&data.endpoint==3,:);
 y_hat_female_end3 = coeff(1)+coeff(2)*dose+coeff(3)*1+coeff(4)*0+coeff(5)*0+coeff(6)*dose*0+coeff(7)*1*0+coeff(8)*1*0;
